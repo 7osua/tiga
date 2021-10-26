@@ -15,15 +15,17 @@ body,main{
 }
 
 #root{
-    background: black;
+    background: #000000;
 }
 
 #root h1{
     position: relative;
-    background-color: #212121;
+    background-color: #212529;
     padding: 3rem;
+    border:0;
+    border-radius: 16px;
     width: calc(4*3rem);
-    color:aqua;
+    color:#ffffff;
     font-size: 3rem;
     top:50%;
     left:50%;
