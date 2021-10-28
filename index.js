@@ -9,7 +9,7 @@ const header = () => {
                         <img class="head-logo-image"
                              src="favicon_io/android-chrome-192x192.png"
                              alt="03.tiga">
-                        <h1 class="head-logo-label">dua</h1>
+                        <h1 class="head-logo-label">tiga</h1>
                   </div>
             </header>
         `,
