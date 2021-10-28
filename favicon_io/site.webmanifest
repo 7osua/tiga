@@ -1,6 +1,6 @@
 {
-    "name": "",
-    "short_name": "",
+    "name": "03.tiga",
+    "short_name": "tiga",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
@@ -13,7 +13,7 @@
             "type": "image/png"
         }
     ],
-    "theme_color": "#ffffff",
+    "theme_color": "#1c7ed6",
     "background_color": "#000000",
     "display": "standalone"
 }
