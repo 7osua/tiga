@@ -1,21 +1,85 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Press+Start+2P&family=Zilla+Slab:wght@300;500;700&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons+Round');
 
 html,
 body {
+    width: 100%;
     padding: 0;
     margin: 0;
 }
 
 body {
-    max-width: 47rem;
-    width: 80%;
-    margin: 0 auto;
     box-sizing: border-box;
-    display: block;
     background-color: #000000;
-    color: #ffffff;
+    color: #f8f9fa;
     text-decoration: none;
     line-height: 1.25rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.app-bar {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    height: 4rem;
+    padding: 0 0 0 1rem;
+    margin: 0;
+    background-color: #212529;
+}
+
+.app-bar__title {
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 4rem;
+    padding: 0;
+    margin: 0;
+}
+
+.menu {
+    position: fixed;
+    z-index: 1;
+    width: 4.5rem;
+    height: 100%;
+    top:0;
+    background-color: #212529;
+}
+
+.contents {
+    list-style: none;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0;
+    margin: auto 0;
+}
+
+.content {
+    height: 4.5rem;
+}
+
+.content-icon {
+    display: block;
+    width: 1.5rem;
+    padding: 0.875rem 0  0.5rem;
+    margin: 0 auto;
+}
+
+.content-label {
+    font-size: 0.625rem;
+    letter-spacing: 1px;
+    line-height: 0.875rem;
+    padding: 0 0 12px 0;
+    margin: 0;
+    text-align: center;
+}
+
+.head {
+    max-width: 47rem;
+    margin: 4rem auto 0;
+    display: block;
 }
 
 .head-logo {
@@ -46,7 +110,6 @@ body {
     }
 
     @media (min-width: 48rem) {
-
         .head-logo {
             margin: 4rem auto;
             max-width: 80%;

@@ -1,8 +1,8 @@
 const root = document.getElementById('root');
 
-const header = () => {
-    root.insertAdjacentHTML(
-        'beforebegin',
+const createHeader = () => {
+    document.body.insertAdjacentHTML(
+        'beforeend',
         `
             <header class="head">
                   <div class="head-logo">
@@ -16,8 +16,77 @@ const header = () => {
     );
 };
 
+const createAppBar = function () {
+    document.body.insertAdjacentHTML(
+        'beforeend',
+        `
+        <div class="app-bar">
+            <h3 class="app-bar__title">NO. 03</h3>
+        </div>
+    `,
+    );
+};
+
+const createNavigatioRail = function () {
+    document.body.insertAdjacentHTML(
+        'beforeend',
+        `
+            <nav class="menu">
+                <ul class="contents">
+                    <li class="content">
+                        <span class="material-icons-round content-icon">
+                            circle
+                        </span>    
+                        <p class="content-label">Menu 1</p>
+                    </li>
+                    <li class="content">
+                        <span class="material-icons-round content-icon">
+                            circle
+                        </span>    
+                        <p class="content-label">Menu 2</p>
+                    </li>
+                    <li class="content">
+                        <span class="material-icons-round content-icon">
+                            circle
+                        </span>    
+                        <p class="content-label">Menu 3</p>
+                    </li>
+                    <li class="content">
+                        <span class="material-icons-round content-icon">
+                            circle
+                        </span>    
+                        <p class="content-label">Menu 4</p>
+                    </li>
+                    <li class="content">
+                        <span class="material-icons-round content-icon">
+                            circle
+                        </span>    
+                        <p class="content-label">Menu 5</p>
+                    </li>
+                    <li class="content">
+                        <span class="material-icons-round content-icon">
+                            circle
+                        </span>    
+                        <p class="content-label">Menu 6</p>
+                    </li>
+                    <li class="content">
+                        <span class="material-icons-round content-icon">
+                            circle
+                        </span>    
+                        <p class="content-label">Menu 7</p>
+                    </li>
+                </ul>
+            </ul>
+          </nav>  
+        
+        `,
+    );
+};
+
 const initPage = () => {
-    header();
+    createAppBar();
+    createNavigatioRail();
+    createHeader();
 };
 
 window.onload = initPage();
