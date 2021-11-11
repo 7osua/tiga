@@ -57,24 +57,6 @@ const createNavigatioRail = function () {
                         </span>    
                         <p class="content-label">Menu 4</p>
                     </li>
-                    <li class="content">
-                        <span class="material-icons-round content-icon">
-                            circle
-                        </span>    
-                        <p class="content-label">Menu 5</p>
-                    </li>
-                    <li class="content">
-                        <span class="material-icons-round content-icon">
-                            circle
-                        </span>    
-                        <p class="content-label">Menu 6</p>
-                    </li>
-                    <li class="content">
-                        <span class="material-icons-round content-icon">
-                            circle
-                        </span>    
-                        <p class="content-label">Menu 7</p>
-                    </li>
                 </ul>
             </ul>
           </nav>  
