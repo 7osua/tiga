@@ -112,7 +112,7 @@ body {
     .contents {
         list-style: none;
         position: relative;
-        top: 50%;
+        top: 55%;
         left: 0;
         transform: translateY(-50%);
         padding: 0;
@@ -128,6 +128,7 @@ body {
 
     .content {
         height: 4.5rem;
+        width: 100%;
     }
 
     .content-icon {
@@ -148,8 +149,12 @@ body {
     }
 }
 
-.head {
+.head,
+#money-level {
     max-width: 47rem;
+}
+
+.head {
     margin: 5rem auto 0;
     display: block;
 }
@@ -202,5 +207,51 @@ body {
             font-size: 4rem;
             padding-left: 24px;
         }
+    }
+}
+
+#money-level {
+    width: 88%;
+    margin: 3rem auto 6rem;
+}
+
+.money-level__content {
+    width: 88%;
+    margin: 0 auto;
+}
+
+.money-level__text {
+    font-size: 1.25rem;
+    line-height: 1.25rem;
+    font-weight: 500;
+    margin: 2rem 0 1rem;
+}
+
+#money-level__expenses,
+#money-level__savings {
+    width: 100%;
+    height: 1rem;
+}
+
+@media (min-width: 48rem) {
+    .money-level__content {
+        width: 64%;
+    }
+
+    .money-level__text {
+        font-size: 3rem;
+        line-height: 3rem;
+        font-weight: 700;
+        margin: 4rem 0 2rem;
+    }
+
+    #money-level__expenses,
+    #money-level__savings {
+        width: 100%;
+        height: 1.5rem;
+    }
+
+    #money-level__text {
+        margin: 6rem auto 1.5rem;
     }
 }

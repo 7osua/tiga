@@ -1,6 +1,22 @@
 const root = document.getElementById('root');
 
-const createHeader = () => {
+const createSavingLevel = function () {
+    document.body.insertAdjacentHTML(
+        'beforeend',
+        `
+            <section id="money-level">
+                <div class="money-level__content">
+                    <h2 class="money-level__text">Pengeluaran</h2>
+                    <progress id="money-level__expenses" max=100 value=80></progress>
+                    <h2 class="money-level__text">Simpanan</h2>
+                    <progress id="money-level__savings" max=100 value=100></progress>
+                </div>
+            </section>
+        `
+    );
+};
+
+const createHeader = function () {
     document.body.insertAdjacentHTML(
         'beforeend',
         `
@@ -35,27 +51,27 @@ const createNavigatioRail = function () {
                 <ul class="contents">
                     <li class="content">
                         <span class="material-icons-round content-icon">
-                            circle
+                           payment 
                         </span>    
-                        <p class="content-label">Menu 1</p>
+                        <p class="content-label">Bayaran</p>
                     </li>
                     <li class="content">
                         <span class="material-icons-round content-icon">
-                            circle
+                           payments 
                         </span>    
-                        <p class="content-label">Menu 2</p>
+                        <p class="content-label">Tagihan</p>
                     </li>
                     <li class="content">
                         <span class="material-icons-round content-icon">
-                            circle
+                           savings 
                         </span>    
-                        <p class="content-label">Menu 3</p>
+                        <p class="content-label">Tabungan</p>
                     </li>
                     <li class="content">
                         <span class="material-icons-round content-icon">
-                            circle
+                           receipt_long   
                         </span>    
-                        <p class="content-label">Menu 4</p>
+                        <p class="content-label">Laporan</p>
                     </li>
                 </ul>
             </ul>
@@ -69,6 +85,7 @@ const initPage = () => {
     createAppBar();
     createNavigatioRail();
     createHeader();
+    createSavingLevel();
 };
 
 window.onload = initPage();
