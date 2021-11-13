@@ -10,8 +10,8 @@ body {
 
 body {
     box-sizing: border-box;
-    background-color: #000000;
-    color: #f8f9fa;
+    background-color: #212529;
+    color: #ced4da;
     text-decoration: none;
     line-height: 1.25rem;
     font-family: 'Poppins', sans-serif;
@@ -100,6 +100,7 @@ body {
     display: block;
     width: 1.5rem;
     height: 1.5rem;
+    color: #f8f9fa;
     padding: 0.5rem;
     margin: 0.25rem auto;
 }
@@ -278,7 +279,7 @@ progress[value] {
 
 #expense__content {
     height: 3rem;
-    margin-top: 3rem;
+    margin-top: 1rem;
 }
 
 @supports (display: flex) {
@@ -291,8 +292,9 @@ progress[value] {
 
 #expense__content > span.content-icon {
     font-size: 1.5rem;
-    height: 2rem;
-    width: 2rem;
+    color :#868e96;
+    height: 1.5rem;
+    width: 1.5rem;
     padding: 0;
     margin: 0 0.25rem 0 0;
 }
@@ -313,7 +315,7 @@ progress[value] {
 
     background-color: #1864ab;
     outline: none;
-    border: solid 2px #1864ab;
+    border: solid 2px #1c7ed6;
     border-radius: 0.5rem;
 }
 
@@ -382,7 +384,7 @@ progress[value] {
     font-weight: 300;
     color: #f8f9fa;
 
-    border: 2px solid #868e96;
+    border: 2px solid #495057;
     background-color: #212529;
     padding: 0 0 0 1rem;
     margin: 1rem auto;
@@ -402,7 +404,7 @@ progress[value] {
 
 .dialog-action {
     height: 6rem;
-    margin: 0.5rem 1.5rem;
+    margin: 0.5rem 0;
 }
 
 @supports (display: flex) {
@@ -415,21 +417,21 @@ progress[value] {
 
 .dialog__button {
     display: block;
-    width: 44%;
-    height: 4rem;
-    font-size: 1.5rem;
-    font-weight: 500;
+    width: 48%;
+    height: 2.5rem;
+    line-height: 2rem;
+    font-size: 0.875rem;
+    font-weight: 300;
     letter-spacing: 0.8px;
-
     color: #f8f9fa;
     background: #1864ab;
-    padding: 1rem;
-    border: 1px solid #1c7ed6;
+    padding: 0.25rem;
+    border: 2px solid #1c7ed6;
 }
 
 #text-field__hero-input,
 .dialog__button {
-    border-radius: 1rem;
+    border-radius: 0.5rem;
 }
 .dialog-cancel {
     background-color: #343a40;
@@ -441,6 +443,30 @@ progress[value] {
     outline-style: none;
     border-color: #f8f9fa;
     border: 2px solid #f8f9fa;
+}
+
+@media (min-width: 48rem) {
+    .dialog-action {
+        margin: 0.5rem 1.5rem;
+    }
+
+    .dialog__button {
+        width: 44%;
+        height: 4rem;
+        font-size: 1.5rem;
+        letter-spacing: 0.8px;
+        padding: 1rem;
+    }
+
+    #text-field__hero-input,
+    .dialog__button {
+        border-radius: 1rem;
+    }
+
+    #text-field__hero-input,
+    .dialog__button {
+        border-radius: 0.5rem;
+    }
 }
 
 .open {
