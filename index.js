@@ -1,17 +1,68 @@
 const root = document.getElementById('root');
 
+const createSavings = function() {
+    root.insertAdjacentHTML(
+        'afterbegin',
+        `
+            <section>
+                <div>
+                    <div>
+                        <h2>Cadangan</h2>
+                        <p>Saat simpanan menipis. Cadanganmu akan otomatis terpotong</p>
+                    </div>
+                    <div>
+                        <input placeholder="total">
+                        <label>total</label>
+                    </div>
+                    <div>
+                        <button>Batal</button>
+                        <button>Simpan</button>
+                    </div>
+                </div>
+            </sectio>
+        `)
+}
+
+const createBills = function () {
+    root.insertAdjacentHTML(
+        'afterbegin',
+        `
+        <section>
+            <div>
+                <div>
+                    <input placeholder="lebel">
+                    <label>lebel</lebel>
+                </div>
+                <div>
+                    <input placeholder="kategori">
+                    <label>Kategori</lebel>
+                </div>
+                <div>
+                    <input placeholder="total">
+                    <label>total</lebel>
+                </div>
+                <div>
+                    <button>Batal</button>
+                    <button>Simpan</button>
+                </div>
+            </div>
+        </section>
+    `,
+    );
+};
+
 const createPayments = function () {
     root.insertAdjacentHTML(
-        `afterbegin`,
+        'afterbegin',
         `
             <section>
                <div>
                     <div>
-                        <input playeholder="Lebel pembayaran">
+                        <input placeholder="lebel">
                         <label>Lebel</label>
                     </div>
                     <div>
-                        <input placeholder="kategori pembayaran">
+                        <input placeholder="kategori">
                         <label>kategori</label> 
                     </div>
                     <div>
@@ -89,6 +140,7 @@ const createSavingLevel = function () {
         `,
     );
 };
+
 const createHeader = function () {
     root.insertAdjacentHTML(
         'afterbegin',
@@ -155,6 +207,8 @@ const createNavigatioRail = function () {
 };
 
 const initPage = () => {
+    createSavings();
+    createBills();
     createPayments();
     createSavingLevel();
     createHeader();
