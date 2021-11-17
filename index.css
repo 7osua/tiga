@@ -508,6 +508,7 @@ progress[value] {
 #payments,
 #bills,
 #savings {
+    display:none;
     background-color: #212529;
     height: 100%;
     width: 100%;
