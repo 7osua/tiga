@@ -1,11 +1,11 @@
 const root = document.getElementById('root');
 
-const createSavings = function() {
+const createSavings = function () {
     root.insertAdjacentHTML(
         'afterbegin',
         `
-            <section>
-                <div>
+            <section id="savings">
+                <div class="content-wrapper">
                     <div>
                         <h2>Cadangan</h2>
                         <p>Saat simpanan menipis. Cadanganmu akan otomatis terpotong</p>
@@ -15,20 +15,21 @@ const createSavings = function() {
                         <label>total</label>
                     </div>
                     <div>
-                        <button>Batal</button>
+                        <button class="dialog-cancel">Batal</button>
                         <button>Simpan</button>
                     </div>
                 </div>
             </sectio>
-        `)
-}
+        `,
+    );
+};
 
 const createBills = function () {
     root.insertAdjacentHTML(
         'afterbegin',
         `
-        <section>
-            <div>
+        <section id="bills">
+            <div class="content-wrapper">
                 <div>
                     <input placeholder="lebel">
                     <label>lebel</lebel>
@@ -42,7 +43,7 @@ const createBills = function () {
                     <label>total</lebel>
                 </div>
                 <div>
-                    <button>Batal</button>
+                    <button class="dialog-cancel">Batal</button>
                     <button>Simpan</button>
                 </div>
             </div>
@@ -55,8 +56,8 @@ const createPayments = function () {
     root.insertAdjacentHTML(
         'afterbegin',
         `
-            <section>
-               <div>
+            <section id="payments">
+               <div id="payments-content" class="content-form"> 
                     <div>
                         <input placeholder="lebel">
                         <label>Lebel</label>
@@ -71,7 +72,7 @@ const createPayments = function () {
                     </div>
                     <div>
                     <div>
-                        <button>Batal</button>
+                        <button class="dialog-cancel">Batal</button>
                         <button>Simpan</button>
                     </div>
                 </div>
@@ -175,28 +176,36 @@ const createNavigatioRail = function () {
             <nav class="menu">
                 <ul class="contents">
                     <li class="content">
-                        <span class="material-icons-round content-icon">
-                           payment 
-                        </span>    
-                        <p class="content-label">Bayaran</p>
+                        <a id="content__payments">
+                            <span class="material-icons-round content-icon">
+                               payment 
+                            </span>    
+                            <p class="content-label">Bayaran</p>
+                        </a>
                     </li>
                     <li class="content">
-                        <span class="material-icons-round content-icon">
-                           payments 
-                        </span>    
-                        <p class="content-label">Tagihan</p>
+                        <a id="content__bills">
+                            <span class="material-icons-round content-icon">
+                               payments 
+                            </span>    
+                            <p class="content-label">Tagihan</p>
+                        </a>
                     </li>
                     <li class="content">
-                        <span class="material-icons-round content-icon">
-                           savings 
-                        </span>    
-                        <p class="content-label">Cadangan</p>
+                        <a id="content__savings">
+                            <span class="material-icons-round content-icon">
+                               savings 
+                            </span>    
+                            <p class="content-label">Cadangan</p>
+                        </a>
                     </li>
                     <li class="content">
-                        <span class="material-icons-round content-icon">
-                           receipt_long   
-                        </span>    
-                        <p class="content-label">Laporan</p>
+                        <a id="content__histories">
+                            <span class="material-icons-round content-icon">
+                               receipt_long   
+                            </span>    
+                            <p class="content-label">Laporan</p>
+                        </a>
                     </li>
                 </ul>
             </ul>

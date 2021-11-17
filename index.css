@@ -96,6 +96,27 @@ body {
     width: 3rem;
 }
 
+a:focus-visible {
+    -webkit-appearance: unset;
+    outline: unset;
+}
+
+.content a:link > span,
+.content a:link > p {
+    color: #f1f8f9;
+}
+
+.content a:active > span,
+.content a:active > .content-icon,
+.content a:active > p {
+    color: #1c7ed6;
+}
+
+.content a:hover > span,
+.content a:hover > span {
+    color: #868e96;
+}
+
 .content-icon {
     display: block;
     width: 1.5rem;
@@ -142,6 +163,7 @@ body {
     .content-label {
         display: block;
         font-size: 0.625rem;
+        color: #f1f8f9;
         letter-spacing: 1px;
         line-height: 0.875rem;
         padding: 0 0 12px 0;
@@ -477,6 +499,30 @@ progress[value] {
     .dialog__button {
         border-radius: 1rem;
     }
+}
+#payments #bills,
+#savings {
+    display: none;
+}
+
+#payments,
+#bills,
+#savings {
+    background-color: #212529;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 4;
+}
+
+.content-form {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    transform: translateY(-50%);
+    padding: 1rem;
 }
 
 .open {
