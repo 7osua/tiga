@@ -1,5 +1,67 @@
 const root = document.getElementById('root');
 
+const createPayments = function () {
+    root.insertAdjacentHTML(
+        `afterbegin`,
+        `
+            <section>
+               <div>
+                    <div>
+                        <input playeholder="Lebel pembayaran">
+                        <label>Lebel</label>
+                    </div>
+                    <div>
+                        <input placeholder="kategori pembayaran">
+                        <label>kategori</label> 
+                    </div>
+                    <div>
+                        <input>
+                        <label>total</label>
+                    </div>
+                    <div>
+                    <div>
+                        <button>Batal</button>
+                        <button>Simpan</button>
+                    </div>
+                </div>
+            </section>
+        `,
+    );
+};
+
+const createBalance = function () {
+    root.insertAdjacentHTML(
+        'afterbegin',
+        `
+            <section class="dialog">
+                <div class="dialog-container">
+                    <div class="text-field-input">
+                        <input id="text-field__hero-input" placeholder="Anggaran . . .">
+                        <label for="text-field__hero-input" id="text-field__floating-label">Simpanan</label>
+                    </div>
+                    <div class="dialog-action">
+                        <button type="button" class="dialog__button dialog-cancel">
+                            Batal
+                        </button>
+                        <button type="button" class="dialog__button">
+                            Simpan 
+                        </button>
+                    </div>
+                </div>
+            </section>
+        `,
+    );
+};
+
+const createBackdrop = function () {
+    root.insertAdjacentHTML(
+        'afterbegin',
+        `
+            <div id="backdrop"></div>
+        `,
+    );
+};
+
 const createSavingLevel = function () {
     root.insertAdjacentHTML(
         'afterbegin',
@@ -27,40 +89,6 @@ const createSavingLevel = function () {
         `,
     );
 };
-
-const createBackdrop = function () {
-    root.insertAdjacentHTML(
-        'afterbegin',
-        `
-            <div id="backdrop"></div>
-        `,
-    );
-};
-
-const createUserInput = function () {
-    root.insertAdjacentHTML(
-        'afterbegin',
-        `
-            <section class="dialog">
-                <div class="dialog-container">
-                    <div class="text-field-input">
-                        <input id="text-field__hero-input" placeholder="Anggaran . . .">
-                        <label for="text-field__hero-input" id="text-field__floating-label">Simpanan / Saldo</label>
-                    </div>
-                    <div class="dialog-action">
-                        <button type="button" class="dialog__button dialog-cancel">
-                            Batal
-                        </button>
-                        <button type="button" class="dialog__button">
-                            Simpan 
-                        </button>
-                    </div>
-                </div>
-            </section>
-        `,
-    );
-};
-
 const createHeader = function () {
     root.insertAdjacentHTML(
         'afterbegin',
@@ -127,9 +155,10 @@ const createNavigatioRail = function () {
 };
 
 const initPage = () => {
+    createPayments();
     createSavingLevel();
     createHeader();
-    createUserInput();
+    createBalance();
     createBackdrop();
     createNavigatioRail();
     createAppBar();
