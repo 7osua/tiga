@@ -58,22 +58,21 @@ const createPayments = function () {
         `
             <section id="payments">
                <div id="payments-content" class="content-form"> 
-                    <div>
-                        <input placeholder="lebel">
+                    <div class="payment-title">
+                        <input id="payment-title" placeholder="lebel">
                         <label>Lebel</label>
                     </div>
-                    <div>
-                        <input placeholder="kategori">
+                    <div class="payment-category">
+                        <input id="payment-category" placeholder="kategori">
                         <label>kategori</label> 
                     </div>
-                    <div>
-                        <input>
+                    <div class="payment-amount">
+                        <input id="payment-category" placeholder="Rp. 1.000.000">
                         <label>total</label>
                     </div>
-                    <div>
-                    <div>
-                        <button class="dialog-cancel">Batal</button>
-                        <button>Simpan</button>
+                    <div class="dialog-action">
+                        <button class="dialog__button dialog-cancel">Batal</button>
+                        <button class="dialog__button">Simpan</button>
                     </div>
                 </div>
             </section>

@@ -508,7 +508,7 @@ progress[value] {
 #payments,
 #bills,
 #savings {
-    display:none;
+    display: none;
     background-color: #212529;
     height: 100%;
     width: 100%;
@@ -524,6 +524,114 @@ progress[value] {
     width: 100%;
     transform: translateY(-50%);
     padding: 1rem;
+}
+
+.payment-title,
+.payment-category,
+.payment-amount,
+.button-action {
+    height: 3rem;
+    padding: 0.5rem 0;
+}
+
+#payment-title,
+#payment-category,
+#payment-amount,
+#button-action {
+    height: 3rem;
+    max-width: 96%;
+    width: 83.5%;
+    font-size: 1rem;
+    line-height: 3rem;
+    color: #f8f9fa;
+    background-color: #212529;
+    appearance: none;
+    border: 2px solid #495057;
+    border-radius: 0.5rem;
+    padding: 0 0 0 1rem;
+}
+
+#payment-title:focus-within,
+#payment-category:focus-within,
+#payment-amount:focus-within {
+    border: 2px solid #f8f9fa;
+    outline: none;
+}
+
+#payment-title[placeholder],
+#payment-category[placeholder],
+#payment-amount[placeholder] {
+    color: #ced4da;
+}
+
+#payments-content > .dialog-action {
+    width: 88%;
+    justify-content: space-around;
+}
+#payments-content > .dialog-action > button {
+    width: 40%;
+}
+
+.payment-title > label,
+.payment-category > label,
+.payment-amount > label {
+    display: none;
+}
+
+@media (min-width: 48rem) {
+    #payments-content,
+    #bills-content,
+    #savings-content {
+        width: 64%;
+        position: fixed;
+        top:50%;
+        left:50%;
+        transform: translate(-50%,-50%);
+    }
+    
+    .payment-title,
+    .payment-category,
+    .payment-amount,
+    .button-action {
+        height: 4rem;
+        padding: 0.5rem 0;
+    }
+
+    #payment-title,
+    #payment-category,
+    #payment-amount,
+    #button-action {
+        height: 4rem;
+        width: 100%;
+        font-size: 2rem;
+        line-height: 4rem;
+        color: #f8f9fa;
+        border-radius: 1rem;
+        padding: 0 0 0 1rem;
+    }
+
+    #payment-title:focus-within,
+    #payment-category:focus-within,
+    #payment-amount:focus-within {
+        border: 2px solid #f8f9fa;
+        outline: none;
+    }
+
+    #payment-title[placeholder],
+    #payment-category[placeholder],
+    #payment-amount[placeholder] {
+        color: #ced4da;
+    }
+
+    #payments-content > .dialog-action {
+        width: 100%;
+        margin: 0;
+        justify-content: flex-end;
+    }
+    
+    #payments-content > .dialog-action > button {
+        width: 40%;
+    }
 }
 
 .open {
