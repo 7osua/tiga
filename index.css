@@ -427,7 +427,7 @@ progress[value] {
 
 .dialog-action {
     height: 6rem;
-    margin: 0.5rem 0;
+    margin: 0;
 }
 
 @supports (display: flex) {
@@ -539,8 +539,7 @@ progress[value] {
 #payment-amount,
 #button-action {
     height: 3rem;
-    max-width: 96%;
-    width: 83.5%;
+    width: 86%;
     font-size: 1rem;
     line-height: 3rem;
     color: #f8f9fa;
@@ -565,11 +564,11 @@ progress[value] {
 }
 
 #payments-content > .dialog-action {
-    width: 88%;
+    width: 92%;
     justify-content: space-around;
 }
 #payments-content > .dialog-action > button {
-    width: 40%;
+    width: 48%;
 }
 
 .payment-title > label,
