@@ -9,9 +9,9 @@ const createSavings = function () {
                     <div class="content-description">
                         <h2 class="content-title">Mulai catat dana cadangan mu</h2>
                         <p class="content-text">
-                            Saat simpanan menipis dan pengeluaran lebih banyak
-                            dari pada anggaran pengeluaran mu. 
-                            Cadanganmu akan otomatis terpotong.
+                            Dana Cadanganmu akan terpotong, jika
+                            lebih banyak pengeluaran dari pada 
+                            dana kamu sekarang.
                         </p>
                     </div>
                     <div class="input-amount">
@@ -37,9 +37,9 @@ const createBills = function () {
                 <div class="content-description">
                     <h2 class="content-title">Mulai catat tagihan mu</h2>
                     <p class="content-text">
-                        Yang penting dicatat saja dulu. 
                         Semakin sering dicatat, kamu bisa 
-                        menyiapkan anggaran untuk tagihan mu.
+                        tahu dana yang perlu disiapkan untuk setiap
+                        tagihan mu.
                     </p>
                 </div>
                 <div class="input-title">
@@ -73,7 +73,6 @@ const createPayments = function () {
                     <div class="content-description">
                         <h2 class="content-title">Mulai catat pengeluaran mu</h2>
                         <p class="content-text">
-                            Yang penting dicatat saja dulu. 
                             Semakin sering dicatat, kamu bisa 
                             mengukur pengeluaran mu.
                         </p>
