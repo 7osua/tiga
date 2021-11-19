@@ -3,7 +3,7 @@ const addBalance = document.getElementById('expense-balance__create-button');
 const backdrop = document.getElementById('backdrop');
 const dialog = document.querySelector('.dialog');
 
-const cancelDialog = document.querySelectorAll('.dialog-cancel');
+const cancelDialog = document.querySelectorAll('.proccess-cancel');
 const payments = document.getElementById('payments');
 const bills = document.getElementById('bills');
 const savings = document.getElementById('savings');

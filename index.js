@@ -6,18 +6,22 @@ const createSavings = function () {
         `
             <section id="savings">
                 <div class="content-wrapper">
-                    <div>
-                        <h2>Cadangan</h2>
-                        <p>Saat simpanan menipis. Cadanganmu akan otomatis terpotong</p>
+                    <div class="content-description">
+                        <h2 class="content-title">Mulai catat dana cadangan mu</h2>
+                        <p class="content-text">
+                            Saat simpanan menipis dan pengeluaran lebih banyak
+                            dari pada anggaran pengeluaran mu. 
+                            Cadanganmu akan otomatis terpotong.
+                        </p>
                     </div>
-                    <div>
-                        <input placeholder="total">
-                        <label>total</label>
+                    <div class="input-amount">
+                        <input class="input-amount__number" placeholder="total">
+                        <label class="input-label">total</label>
                     </div>
-                    <div>
-                        <button class="dialog-cancel">Batal</button>
-                        <button>Simpan</button>
-                    </div>
+                    <div class="proccess-action">
+                        <button class="proccess__button proccess-cancel">Batal</button>
+                        <button class="proccess__button">Simpan</button>
+                     </div>
                 </div>
             </sectio>
         `,
@@ -30,21 +34,29 @@ const createBills = function () {
         `
         <section id="bills">
             <div class="content-wrapper">
-                <div>
-                    <input placeholder="lebel">
-                    <label>lebel</lebel>
+                <div class="content-description">
+                    <h2 class="content-title">Mulai catat tagihan mu</h2>
+                    <p class="content-text">
+                        Yang penting dicatat saja dulu. 
+                        Semakin sering dicatat, kamu bisa 
+                        menyiapkan anggaran untuk tagihan mu.
+                    </p>
                 </div>
-                <div>
-                    <input placeholder="kategori">
-                    <label>Kategori</lebel>
+                <div class="input-title">
+                    <input class="input-title__text" placeholder="lebel">
+                    <label class="input-lebel">lebel</lebel>
                 </div>
-                <div>
-                    <input placeholder="total">
-                    <label>total</lebel>
+                <div class="input-category">
+                    <input class="input-category__text" placeholder="kategori">
+                    <label class="input-lebel">Kategori</lebel>
                 </div>
-                <div>
-                    <button class="dialog-cancel">Batal</button>
-                    <button>Simpan</button>
+                <div class="input-amount">
+                    <input class="input-amount__number" placeholder="total">
+                    <label class="input-lebel">total</lebel>
+                </div>
+                <div class="proccess-action">
+                    <button class="proccess__button proccess-cancel">Batal</button>
+                    <button class="proccess__button">Simpan</button>
                 </div>
             </div>
         </section>
@@ -57,22 +69,30 @@ const createPayments = function () {
         'afterbegin',
         `
             <section id="payments">
-               <div id="payments-content" class="content-form"> 
-                    <div class="payment-title">
-                        <input id="payment-title" placeholder="lebel">
-                        <label>Lebel</label>
+               <div class="content-wrapper"> 
+                    <div class="content-description">
+                        <h2 class="content-title">Mulai catat pengeluaran mu</h2>
+                        <p class="content-text">
+                            Yang penting dicatat saja dulu. 
+                            Semakin sering dicatat, kamu bisa 
+                            mengukur pengeluaran mu.
+                        </p>
                     </div>
-                    <div class="payment-category">
-                        <input id="payment-category" placeholder="kategori">
-                        <label>kategori</label> 
+                    <div class="input-title">
+                        <input class="input-title__text" placeholder="lebel">
+                        <label class="input-lebel">Lebel</label>
                     </div>
-                    <div class="payment-amount">
-                        <input id="payment-category" placeholder="Rp. 1.000.000">
-                        <label>total</label>
+                    <div class="input-category">
+                        <input class="input-category__text" placeholder="kategori">
+                        <label class="input-lebel">kategori</label> 
                     </div>
-                    <div class="dialog-action">
-                        <button class="dialog__button dialog-cancel">Batal</button>
-                        <button class="dialog__button">Simpan</button>
+                    <div class="input-amount">
+                        <input class="input-amount__number" placeholder="Rp. 1.000.000">
+                        <label class="input-lebel">total</label>
+                    </div>
+                    <div class="proccess-action">
+                        <button class="proccess__button proccess-cancel">Batal</button>
+                        <button class="proccess__button">Simpan</button>
                     </div>
                 </div>
             </section>
@@ -90,11 +110,11 @@ const createBalance = function () {
                         <input id="text-field__hero-input" placeholder="Anggaran . . .">
                         <label for="text-field__hero-input" id="text-field__floating-label">Simpanan</label>
                     </div>
-                    <div class="dialog-action">
-                        <button type="button" class="dialog__button dialog-cancel">
+                    <div class="proccess-action">
+                        <button type="button" class="proccess__button proccess-cancel">
                             Batal
                         </button>
-                        <button type="button" class="dialog__button">
+                        <button type="button" class="proccess__button">
                             Simpan 
                         </button>
                     </div>
