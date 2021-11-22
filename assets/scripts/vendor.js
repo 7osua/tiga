@@ -73,10 +73,7 @@ addBalance.addEventListener('click', showAddBalance);
 paymentLink.addEventListener('click', showPayments);
 billLink.addEventListener('click', showBills);
 savingLink.addEventListener('click', showSavings);
-// cancelDialog.addEventListener('click', hideDialog);
-console.log(cancelDialog);
 cancelDialog.forEach(function (elem) {
     elem.addEventListener('click', hideDialog);
 });
-
 backdrop.addEventListener('click', hideBackDrop);

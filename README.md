@@ -1,7 +1,17 @@
-# TIGA
+# [TIGA](https://www.tiga.josuamanullang.com) - HTML, CSS, JavaScript
 
-Start small :muscle:! Go Solo :rocket:!
+Web app sederhana untuk membuat catatan keuangan.
 
-Check it out
+-   [ ] Menambah anggaran untuk pengeluaran
+-   [ ] Menentukan total pengeluaran untuk pembayaran
+-   [ ] Menentukan total pengeluaran untuk tagihan
+-   [ ] Menentukan dana untuk biaya tak terduga. <br> (Jika anggaran untuk
+        pengeluaran > pembayaran + tagihan)
+-   [ ] Menunjukkan progres saat ini untuk dana untuk pengeluaran
+-   [ ] Menunjukkan progres pengeluaran (pembayaran + pengeluaran)
 
-[03.Tiga](https://tiga.josuamanullang.com 'Project 03 dibuat oleh Josua Manullang').
+dll . . .
+
+> 72
+
+Start small! Go Solo :daart: :rocket:!
