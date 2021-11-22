@@ -22,6 +22,8 @@ JavaScript tentang :
 
 dll . . .
 
-> 72
+NOTE : Mendefiniskan UI dari data yang akan diproses
 
-Start small! Go Solo :dart: :rocket:!
+> 72 
+
+Start small :dart: Go Solo :rocket:
