@@ -12,6 +12,16 @@ Web app sederhana untuk membuat catatan keuangan.
 
 dll . . .
 
+Dengan projek ini, setidaknya dapat memperdalam dan mempertajam dasar dan konsep
+JavaScript tentang :
+
+-   Menggunakan `if ... else` statement
+-   Mengkombinasikan ```if ... else``` pada ```function()```
+-   Menggunakan ```if ... else``` tanpa boolean operators
+-   Melakukan validasi pada input yang dilakukan user
+
+dll . . .
+
 > 72
 
-Start small! Go Solo :daart: :rocket:!
+Start small! Go Solo :dart: :rocket:!
