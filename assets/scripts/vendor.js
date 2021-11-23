@@ -1,7 +1,7 @@
 const addBalance = document.getElementById('expense-balance__create-button');
 
 const backdrop = document.getElementById('backdrop');
-const dialog = document.querySelector('.dialog');
+const insertBalance = document.querySelector('.insert-balance');
 
 const cancelDialog = document.querySelectorAll('.proccess-cancel');
 const payments = document.getElementById('payments');
@@ -12,6 +12,13 @@ const paymentLink = document.getElementById('content__payments');
 const billLink = document.getElementById('content__bills');
 const savingLink = document.getElementById('content__savings');
 
+const balanceAmount = document.getElementById('balance-amount');
+const savingAmount = document.getElementById('saving-amount');
+const paymentTitle = document.getElementById('payment-title');
+const paymentAmount = document.getElementById('payment-amount');
+const billTitle = document.getElementById('bill-title');
+const billAmount = document.getElementById('bill-amount');
+
 function hideBackDrop() {
     backdrop.classList.remove('open');
     backdrop.style.display = 'none';
@@ -20,8 +27,8 @@ function hideBackDrop() {
 function showAddBalance() {
     backdrop.style.display = 'block';
     backdrop.classList.toggle('open');
-    dialog.style.display = 'block';
-    dialog.classList.toggle('open');
+    insertBalance.style.display = 'block';
+    insertBalance.classList.toggle('open');
 }
 
 function showPayments() {
@@ -49,9 +56,9 @@ function showSavings() {
 }
 
 function hideDialog() {
-    if (dialog) {
-        dialog.classList.remove('open');
-        dialog.style.display = 'none';
+    if (insertBalance) {
+        insertBalance.classList.remove('open');
+        insertBalance.style.display = 'none';
     }
     if (payments) {
         payments.classList.remove('open');
@@ -65,8 +72,8 @@ function hideDialog() {
         savings.classList.remove('open');
         savings.style.display = 'none';
     }
-    backdrop.style.display = 'none';
     backdrop.classList.remove('open');
+    backdrop.style.display = 'none';
 }
 
 addBalance.addEventListener('click', showAddBalance);
@@ -77,3 +84,7 @@ cancelDialog.forEach(function (elem) {
     elem.addEventListener('click', hideDialog);
 });
 backdrop.addEventListener('click', hideBackDrop);
+
+balanceAmount.addEventListener('input', () => {
+    console.log(balanceAmount.value);
+});

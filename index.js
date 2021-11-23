@@ -15,8 +15,8 @@ const createSavings = function () {
                         </p>
                     </div>
                     <div class="input-amount">
-                        <input class="input-amount__number" placeholder="+ Rp. 500.000">
-                        <label class="input-label">total</label>
+                        <input id="saving-amount" class="input-amount__number" type="number" placeholder="+ Rp. 500.000">
+                        <label for="saving-amount" class="input-label">total</label>
                     </div>
                     <div class="proccess-action">
                         <button class="proccess__button proccess-cancel">Batal</button>
@@ -43,11 +43,11 @@ const createBills = function () {
                     </p>
                 </div>
                 <div class="input-title">
-                    <input class="input-title__text" placeholder="Listrik">
-                    <label class="input-lebel">lebel</lebel>
+                    <input id="bill-title" class="input-title__text" type="text"  placeholder="Listrik">
+                    <label class="bill-title">lebel</lebel>
                 </div>
                 <div class="input-amount">
-                    <input class="input-amount__number" placeholder="Rp. 49.000">
+                    <input id="bill-amount" class="input-amount__number"  type="number" placeholder="Rp. 49.000">
                     <label class="input-lebel">total</lebel>
                 </div>
                 <div class="proccess-action">
@@ -74,11 +74,11 @@ const createPayments = function () {
                         </p>
                     </div>
                     <div class="input-title">
-                        <input class="input-title__text" placeholder="Lalapan Ayam">
+                        <input id="payment-title" class="input-title__text" type="text" placeholder="Lalapan Ayam">
                         <label class="input-lebel">Lebel</label>
                     </div>
                     <div class="input-amount">
-                        <input class="input-amount__number" placeholder="Rp. 10.000">
+                        <input id="payment-amount" class="input-amount__number" type="number" placeholder="Rp. 10.000">
                         <label class="input-lebel">total</label>
                     </div>
                     <div class="proccess-action">
@@ -95,11 +95,11 @@ const createBalance = function () {
     root.insertAdjacentHTML(
         'afterbegin',
         `
-            <section class="dialog">
-                <div class="dialog-container">
+            <section class="insert-balance">
+                <div class="insert-balance-container">
                     <div class="text-field-input">
-                        <input id="text-field__hero-input" placeholder="Anggaran . . .">
-                        <label for="text-field__hero-input" id="text-field__floating-label">Simpanan</label>
+                        <input id="balance-amount" type="number" placeholder="Anggaran . . .">
+                        <label for="balance-amount" id="text-field__floating-label">Simpanan</label>
                     </div>
                     <div class="proccess-action">
                         <button type="button" class="proccess__button proccess-cancel">
