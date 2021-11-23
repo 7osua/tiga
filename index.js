@@ -7,15 +7,15 @@ const createSavings = function () {
             <section id="savings">
                 <div class="content-wrapper">
                     <div class="content-description">
-                        <h2 class="content-title">Mulai catat dana cadangan mu</h2>
+                        <h2 class="content-title">Catatan untuk dana cadangan mu</h2>
                         <p class="content-text">
-                            Dana Cadanganmu akan terpotong, jika
-                            lebih banyak pengeluaran dari pada 
-                            dana kamu sekarang.
+                            Tambah dana cadanganmu. Mulai berjaga-jaga jika 
+                            pengeluaran lebih besar dari pada saldo mu saat ini, 
+                            otomatis menambah dana cadangan mu. 
                         </p>
                     </div>
                     <div class="input-amount">
-                        <input class="input-amount__number" placeholder="total">
+                        <input class="input-amount__number" placeholder="+ Rp. 500.000">
                         <label class="input-label">total</label>
                     </div>
                     <div class="proccess-action">
@@ -43,15 +43,11 @@ const createBills = function () {
                     </p>
                 </div>
                 <div class="input-title">
-                    <input class="input-title__text" placeholder="lebel">
+                    <input class="input-title__text" placeholder="Listrik">
                     <label class="input-lebel">lebel</lebel>
                 </div>
-                <div class="input-category">
-                    <input class="input-category__text" placeholder="kategori">
-                    <label class="input-lebel">Kategori</lebel>
-                </div>
                 <div class="input-amount">
-                    <input class="input-amount__number" placeholder="total">
+                    <input class="input-amount__number" placeholder="Rp. 49.000">
                     <label class="input-lebel">total</lebel>
                 </div>
                 <div class="proccess-action">
@@ -78,15 +74,11 @@ const createPayments = function () {
                         </p>
                     </div>
                     <div class="input-title">
-                        <input class="input-title__text" placeholder="lebel">
+                        <input class="input-title__text" placeholder="Lalapan Ayam">
                         <label class="input-lebel">Lebel</label>
                     </div>
-                    <div class="input-category">
-                        <input class="input-category__text" placeholder="kategori">
-                        <label class="input-lebel">kategori</label> 
-                    </div>
                     <div class="input-amount">
-                        <input class="input-amount__number" placeholder="Rp. 1.000.000">
+                        <input class="input-amount__number" placeholder="Rp. 10.000">
                         <label class="input-lebel">total</label>
                     </div>
                     <div class="proccess-action">
@@ -154,6 +146,17 @@ const createSavingLevel = function () {
                             Isi saldo
                         </button>
                     </button>
+                </div>
+                <div id="expense__extra">
+                    <span class="material-icons-round content-icon">
+                        sync_alt
+                    </span> 
+                    <p id="extra-balance">
+                        Rp. 1.000.000
+                    </p>
+                    <p id="extra-counter">
+                        0
+                    </P>
                 </div>
             </section>
         `,
