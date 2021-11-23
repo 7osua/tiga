@@ -18,8 +18,6 @@ body {
     box-sizing: border-box;
 }
 
-
-
 input[type='number'] {
     -moz-appearance: textfield;
     outline: none;
@@ -124,8 +122,7 @@ a:focus-visible {
     color: #1c7ed6;
 }
 
-.content a:hover > span,
-.content a:hover > span {
+.content a:hover > *{
     color: #868e96;
 }
 
@@ -184,8 +181,7 @@ a:focus-visible {
     }
 }
 
-.head,
-#money-level {
+.head {
     max-width: 47rem;
 }
 
@@ -266,27 +262,29 @@ a:focus-visible {
 #money-level__expenses,
 #money-level__savings {
     width: 100%;
-    height: 1rem;
+    height: 0.75rem;
+    background-color: #dee2e6;
+    border-radius: 0.75rem;
+    border: 2px solid #1c7ed6;
+    width: 100%;
 }
 
-progress[value] {
-    -webkit-appearance: none;
-}
-
-#money-level__expenses[value]::-webkit-progress-value,
-#money-level__savings[value]::-webkit-progress-value {
-    border-radius: 1rem;
-    background-color: #1c7ed6;
-    color: #212529;
+::-moz-progress-bar{
+    border-radius: 0.75rem;
 }
 
 #money-level__expenses::-webkit-progress-bar,
 #money-level__savings::-webkit-progress-bar {
-    background-color: #dee2e6;
-    border-radius: 1rem;
-    width: 100%;
-    height: 0.875rem;
+    background-color: transparent;
 }
+
+#money-level__expenses[value]::-webkit-progress-value,
+#money-level__savings[value]::-webkit-progress-value {
+    border-radius: 0.75rem;
+    background-color: #1c7ed6;
+    color: #212529;
+}
+
 
 @media (min-width: 48rem) {
     .money-level__content,
@@ -295,20 +293,17 @@ progress[value] {
     }
 
     .money-level__text {
-        font-size: 3rem;
-        line-height: 3rem;
-        margin: 4rem 0 2rem;
+        font-size: 2rem;
+        line-height: 2rem;
+        margin: 4rem 0 1rem;
     }
 
     #money-level__expenses,
     #money-level__savings {
         width: 100%;
-        height: 1.5rem;
+        height: 1rem;
     }
 
-    #money-level__text {
-        margin: 6rem auto 1.5rem;
-    }
 }
 
 #expense__content {

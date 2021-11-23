@@ -137,19 +137,28 @@ const createSavingLevel = function () {
                 </div>
                 <div id="expense__content">
                         <span class="material-icons-round content-icon">
-                            account_balance_wallet
+                           account_balance_wallet 
                         </span>
                         <p id="expense-balance">
                             Rp. 3.000.000
                         </p>
                         <button id="expense-balance__create-button">
-                            Isi saldo
+                            + dana
                         </button>
+                    </button>
+                </div>
+                <div id="expense__content">
+                        <span class="material-icons-round content-icon">
+                           outbox 
+                        </span>
+                        <p id="expense-balance">
+                            Rp. 3.000.000
+                        </p>
                     </button>
                 </div>
                 <div id="expense__extra">
                     <span class="material-icons-round content-icon">
-                        sync_alt
+                        move_to_inbox
                     </span> 
                     <p id="extra-balance">
                         Rp. 1.000.000
