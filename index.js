@@ -124,48 +124,46 @@ const createBackdrop = function () {
     );
 };
 
-const createSavingLevel = function () {
+const createExpenses = function () {
     root.insertAdjacentHTML(
         'afterbegin',
         `
-            <section id="money-level">
-                <div class="money-level__content">
-                    <h2 class="money-level__text">Pengeluaran</h2>
-                    <progress id="money-level__expenses" max=100 value=80></progress>
-                    <h2 class="money-level__text">Anggaran</h2>
-                    <progress id="money-level__savings" max=100 value=100></progress>
+            <section id="expenses">
+                <div class="expenses-content">
+                    <h2 class="">Pengeluaran</h2>
+                    <progress id="" max=100 value=80></progress>
+                    <span class="material-icons-round content-icon">
+                        outbox 
+                    </span>
+                    <p id="">
+                        Rp. 3.000.000
+                    <p>
                 </div>
-                <div id="expense__content">
+                <div class="expenses-content">
+                    <h2 class="">Anggaran</h2>
+                    <progress id="" max=100 value=100></progress>
+                    <div class="expenses-balance">
                         <span class="material-icons-round content-icon">
-                           account_balance_wallet 
+                        account_balance_wallet 
                         </span>
-                        <p id="expense-balance">
+                        <p id="">
                             Rp. 3.000.000
                         </p>
-                        <button id="expense-balance__create-button">
+                        <button id="expense-balance__assign-button">
                             + dana
                         </button>
-                    </button>
-                </div>
-                <div id="expense__content">
+                    </div>
+                    <div class="expenses-add">
                         <span class="material-icons-round content-icon">
-                           outbox 
-                        </span>
-                        <p id="expense-balance">
-                            Rp. 3.000.000
+                            move_to_inbox
+                        </span> 
+                        <p id="">
+                            Rp. 1.000.000
                         </p>
-                    </button>
-                </div>
-                <div id="expense__extra">
-                    <span class="material-icons-round content-icon">
-                        move_to_inbox
-                    </span> 
-                    <p id="extra-balance">
-                        Rp. 1.000.000
-                    </p>
-                    <p id="extra-counter">
-                        0
-                    </P>
+                        <p id="">
+                            0
+                        </P>
+                    </div>
                 </div>
             </section>
         `,
@@ -249,7 +247,7 @@ const initPage = () => {
     createSavings();
     createBills();
     createPayments();
-    createSavingLevel();
+    createExpenses();
     createHeader();
     createBalance();
     createBackdrop();

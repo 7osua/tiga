@@ -1,4 +1,4 @@
-const addBalance = document.getElementById('expense-balance__create-button');
+const addBalance = document.getElementById('expense-balance__assign-button');
 
 const backdrop = document.getElementById('backdrop');
 const insertBalance = document.querySelector('.insert-balance');
