@@ -28,6 +28,12 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
 
+#root {
+    max-width: 40rem;
+    width: 100%;
+    margin: 0 auto 3.5rem;
+}
+
 .app-bar {
     display: block;
     position: fixed;
@@ -221,6 +227,7 @@ a:focus-visible {
     .head-logo-label {
         font-size: 2rem;
         padding-left: 8px;
+        text-shadow: 2px -2px 0px #212529;
     }
 
     @media (min-width: 48rem) {
@@ -237,6 +244,7 @@ a:focus-visible {
         .head-logo-label {
             font-size: 4rem;
             padding-left: 24px;
+            text-shadow: 5px -6px 0px #212529;
         }
     }
 }
@@ -249,7 +257,77 @@ a:focus-visible {
     background-color: #212529;
     border-radius: 0.5rem;
     padding: 0.75rem;
-    margin: 0 0 1rem;
+    margin: 0 0 0.5rem;
+}
+
+.expenses-title {
+    margin: 0.5rem 0;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.expenses-level {
+    display: block;
+    width: 100%;
+    background-color: #495057;
+    height: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.expenses-level::-webkit-progress-bar {
+    display: unset;
+}
+
+.expenses-level::-webkit-progress-value {
+    background-color: #f8f9fa;
+    border-radius: 0.5rem;
+}
+
+.expenses-summary > * {
+    display: block;
+}
+
+.expenses-summary span {
+    width: 1rem;
+    /* height: 1.25rem; */
+    font-size: 1.15rem;
+    line-height: 1.25rem;
+}
+
+.expenses-summary {
+    height: 2rem;
+    margin: 0.5rem 0;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.expenses-value {
+    flex-grow: 2;
+    padding: 0 0 0 0.5rem;
+    margin: 0;
+    font-size: 1rem;
+    line-height: 2rem;
+    font-weight: 300;
+}
+
+#expense-balance__assign-button {
+    outline: none;
+    width: 4.5rem;
+    height: 1.5rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+    color: #1971c2;
+    background-color: transparent;
+    border: none;
+}
+
+#expenses-add__counter {
+    width: 4.5rem;
+    text-align: center;
 }
 
 #backdrop {

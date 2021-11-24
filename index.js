@@ -10,8 +10,8 @@ const createSavings = function () {
                         <h2 class="content-title">Catatan untuk dana cadangan mu</h2>
                         <p class="content-text">
                             Tambah dana cadanganmu. Mulai berjaga-jaga jika 
-                            pengeluaran lebih besar dari pada saldo mu saat ini, 
-                            otomatis menambah dana cadangan mu. 
+                            saja pengeluaran lebih besar dari pada saldo mu 
+                            saat ini. 
                         </p>
                     </div>
                     <div class="input-amount">
@@ -130,37 +130,39 @@ const createExpenses = function () {
         `
             <section id="expenses">
                 <div class="expenses-content">
-                    <h2 class="">Pengeluaran</h2>
-                    <progress id="" max=100 value=80></progress>
-                    <span class="material-icons-round content-icon">
-                        outbox 
-                    </span>
-                    <p id="">
-                        Rp. 3.000.000
-                    <p>
+                    <h3 class="expenses-title">Pengeluaran</h3>
+                    <progress id="expenses-minus" class="expenses-level" max=100 value=80></progress>
+                    <div class="expenses-summary">
+                        <span class="material-icons-round">
+                            outbox 
+                        </span>
+                        <h2 id="expenses-total__value" class="expenses-value">
+                            Rp. 3.000.000
+                        <h2>
+                    </div>
                 </div>
                 <div class="expenses-content">
-                    <h2 class="">Anggaran</h2>
-                    <progress id="" max=100 value=100></progress>
-                    <div class="expenses-balance">
-                        <span class="material-icons-round content-icon">
-                        account_balance_wallet 
+                    <h3 class="expenses-title">Anggaran</h3>
+                    <progress id="expenses-balance" class="expenses-level" max=100 value=100></progress>
+                    <div class="expenses-summary">
+                        <span class="material-icons-round">
+                            account_balance_wallet 
                         </span>
-                        <p id="">
+                        <h2 id="expenses-balance__value" class="expenses-value">
                             Rp. 3.000.000
-                        </p>
+                        </h2>
                         <button id="expense-balance__assign-button">
                             + dana
                         </button>
                     </div>
-                    <div class="expenses-add">
-                        <span class="material-icons-round content-icon">
+                    <div class="expenses-summary">
+                        <span class="material-icons-round">
                             move_to_inbox
                         </span> 
-                        <p id="">
+                        <h2 id="expenses-add__value" class="expenses-value">
                             Rp. 1.000.000
-                        </p>
-                        <p id="">
+                        </h2>
+                        <p id="expenses-add__counter">
                             0
                         </P>
                     </div>
