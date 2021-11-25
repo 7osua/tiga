@@ -4,23 +4,19 @@ const createSavings = function () {
     root.insertAdjacentHTML(
         'afterbegin',
         `
-            <section id="savings">
-                <div class="content-wrapper">
-                    <div class="content-description">
-                        <h2 class="content-title">Catatan untuk dana cadangan mu</h2>
-                        <p class="content-text">
-                            Tambah dana cadanganmu. Mulai berjaga-jaga jika 
-                            saja pengeluaran lebih besar dari pada saldo mu 
-                            saat ini. 
-                        </p>
+            <section id="saving" class="wrapper">
+                <div id="saving-set" class="content-item">
+                    <p class="content-description">
+                        Tambah dana cadanganmu. Mulai berjaga-jaga jika 
+                        saja pengeluaran lebih besar dari pada saldo mu 
+                        saat ini. 
+                    </p>
+                    <div class="saving-assign">
+                        <input id="saving-amount__value" type="number" placeholder="+ Rp. 500.000">
                     </div>
-                    <div class="input-amount">
-                        <input id="saving-amount" class="input-amount__number" type="number" placeholder="+ Rp. 500.000">
-                        <label for="saving-amount" class="input-label">total</label>
-                    </div>
-                    <div class="proccess-action">
-                        <button class="proccess__button proccess-cancel">Batal</button>
-                        <button class="proccess__button">Simpan</button>
+                    <div class="saving-action">
+                        <button class="proccess__button assign-cancel">Batal</button>
+                        <button id="save-saving" class="proccess__button">Simpan</button>
                      </div>
                 </div>
             </sectio>
@@ -32,30 +28,23 @@ const createBills = function () {
     root.insertAdjacentHTML(
         'afterbegin',
         `
-        <section id="bills">
-            <div class="content-wrapper">
-                <div class="content-description">
-                    <h2 class="content-title">Mulai catat tagihan mu</h2>
-                    <p class="content-text">
+            <section id="bill" class="wrapper">
+                <div id="bill-set" class="content-item">
+                    <p class="content-description">
                         Semakin sering dicatat, kamu bisa 
                         tahu dana yang perlu disiapkan untuk setiap
-                        tagihan mu.
+                        tagihan.
                     </p>
+                    <div class="bill-assign">
+                        <input id="bill-title__value" type="text"  placeholder="Listrik">
+                        <input id="bill-amount__value" type="number" placeholder="Rp. 49.000">
+                    </div>
+                    <div class="bill-action">
+                        <button class="proccess__button assign-cancel">Batal</button>
+                        <button id="save-bill" class="proccess__button">Simpan</button>
+                    </div>
                 </div>
-                <div class="input-title">
-                    <input id="bill-title" class="input-title__text" type="text"  placeholder="Listrik">
-                    <label class="bill-title">lebel</lebel>
-                </div>
-                <div class="input-amount">
-                    <input id="bill-amount" class="input-amount__number"  type="number" placeholder="Rp. 49.000">
-                    <label class="input-lebel">total</lebel>
-                </div>
-                <div class="proccess-action">
-                    <button class="proccess__button proccess-cancel">Batal</button>
-                    <button class="proccess__button">Simpan</button>
-                </div>
-            </div>
-        </section>
+            </section>
     `,
     );
 };
@@ -64,26 +53,19 @@ const createPayments = function () {
     root.insertAdjacentHTML(
         'afterbegin',
         `
-            <section id="payments">
-               <div class="content-wrapper"> 
-                    <div class="content-description">
-                        <h2 class="content-title">Mulai catat pengeluaran mu</h2>
-                        <p class="content-text">
-                            Semakin sering dicatat, kamu bisa 
-                            mengukur pengeluaran mu.
-                        </p>
+            <section id="payment" class="wrapper">
+               <div id="payment-set" class="content-item"> 
+                    <p class="content-description">
+                        Catat pembayaran saat ini, kamu bisa 
+                        mengukur pengeluaran untuk belanja dll.
+                    </p>
+                    <div class="payment-assign">
+                        <input id="payment-title__value" type="text" placeholder="Lalapan Ayam">
+                        <input id="payment-amount__value" type="number" placeholder="Rp. 10.000">
                     </div>
-                    <div class="input-title">
-                        <input id="payment-title" class="input-title__text" type="text" placeholder="Lalapan Ayam">
-                        <label class="input-lebel">Lebel</label>
-                    </div>
-                    <div class="input-amount">
-                        <input id="payment-amount" class="input-amount__number" type="number" placeholder="Rp. 10.000">
-                        <label class="input-lebel">total</label>
-                    </div>
-                    <div class="proccess-action">
-                        <button class="proccess__button proccess-cancel">Batal</button>
-                        <button class="proccess__button">Simpan</button>
+                    <div class="payment-action">
+                        <button class="proccess__button assign-cancel">Batal</button>
+                        <button id="save-payment" class="proccess__button">Simpan</button>
                     </div>
                 </div>
             </section>
@@ -95,17 +77,17 @@ const createBalance = function () {
     root.insertAdjacentHTML(
         'afterbegin',
         `
-            <section class="insert-balance">
-                <div class="insert-balance-container">
-                    <div class="text-field-input">
-                        <input id="balance-amount" type="number" placeholder="Anggaran . . .">
-                        <label for="balance-amount" id="text-field__floating-label">Simpanan</label>
+            <section id="balance" class="wrapper">
+                <div id="balance-set" class="content-item">
+                    <p class="content-description">Besaran dana pengeluaran mu untuk saat ini.</p>
+                    <div class="balance-assign">
+                        <input id="balance-amount__value" type="number" placeholder="Anggaran . . .">
                     </div>
-                    <div class="proccess-action">
-                        <button type="button" class="proccess__button proccess-cancel">
+                    <div class="balance-action">
+                        <button  class="proccess__button assign-cancel" type="button">
                             Batal
                         </button>
-                        <button type="button" class="proccess__button">
+                        <button id="save-balance" class="proccess__button" type="button">
                             Simpan 
                         </button>
                     </div>
