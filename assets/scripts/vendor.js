@@ -88,13 +88,15 @@ const putValue = (amount) => {
 
 const getUserBudget = () => {
     const budgetVal = parseInt(balanceAmount.value);
+    
+    balanceAmount.value = null;
+    hideDialog();
+    hideBackDrop();
+    
     isNaN(budgetVal)
         ? alert('Must a number')
         : adjustExpenseBalanceBars(budgetVal);
     putValue(budgetVal);
-    balanceAmount.value = null;
-    hideDialog();
-    hideBackDrop();
 };
 
 const writeValue = (elment) => {};

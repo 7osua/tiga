@@ -114,25 +114,25 @@ const createExpenses = function () {
             <section id="expenses">
                 <div class="expenses-content">
                     <h3 class="expenses-title">Pengeluaran</h3>
-                    <progress id="expenses-minus" class="expenses-level" max=100 value=80></progress>
+                    <progress id="expenses-minus" class="expenses-level" max=100 value=0></progress>
                     <div class="expenses-summary">
                         <span class="material-icons-round">
                             outbox 
                         </span>
                         <h2 id="expense-total__value" class="expenses-value">
-                            Rp. <span>3.000.000</span>
+                            Rp. <span>0</span>
                         <h2>
                     </div>
                 </div>
                 <div class="expenses-content">
                     <h3 class="expenses-title">Anggaran</h3>
-                    <progress id="expenses-balance" class="expenses-level" max=100 value=100></progress>
+                    <progress id="expenses-balance" class="expenses-level" max=100 value=0></progress>
                     <div class="expenses-summary">
                         <span class="material-icons-round">
                             account_balance_wallet 
                         </span>
                         <h2 id="expense-balance__value" class="expenses-value">
-                            Rp. <span>3.000.000</span>
+                            Rp. <span>0</span>
                         </h2>
                         <button id="expense-balance__assign-button">
                             + dana
@@ -143,7 +143,7 @@ const createExpenses = function () {
                             move_to_inbox
                         </span> 
                         <h2 id="expenses-add__value" class="expenses-value">
-                            Rp. 1.000.000
+                            Rp. 0
                         </h2>
                         <p id="expenses-add__counter">
                             0
