@@ -41,12 +41,23 @@ input[type='text'] {
 }
 
 input::placeholder {
-    color: #ced4da;
+    color: #868e96;
 }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
+}
+
+@media (min-width: 48rem) {
+    input {
+        height: 3rem;
+    }
+
+    input[type='number'],
+    input[type='text'] {
+        font-size: 1rem;
+    }
 }
 
 #root {
@@ -158,7 +169,7 @@ a:focus-visible {
     width: 1.5rem;
     height: 1.5rem;
     color: #f8f9fa;
-    padding: 0.5rem;
+    /* padding: 0.5rem; */
     margin: 0.25rem auto;
 }
 
@@ -305,9 +316,9 @@ a:focus-visible {
     border-radius: 0.5rem;
 }
 
-.expenses-level::-moz-progress-bar{
+.expenses-level::-moz-progress-bar {
     background-color: #f8f9fa;
-    border:#495057;
+    border: #495057;
     border-radius: 0.5rem;
 }
 
@@ -348,14 +359,66 @@ a:focus-visible {
     font-size: 0.875rem;
     font-weight: 700;
     font-family: 'Poppins', sans-serif;
-    color: #1971c2;
+    color: #1c7ed6;
     background-color: transparent;
-    border: none;
+    border: 2px solid #212529;
+}
+
+#expense-balance__assign-button:focus-within,
+#expense-balance__assign-button:focus-visible {
+    outline: none;
+    border: 2px solid #f8f0fc;
+    border-radius : 0.5rem;
 }
 
 #expenses-add__counter {
     width: 4.5rem;
     text-align: center;
+}
+
+@media (min-width: 48rem) {
+    .expenses-title {
+        margin: 0 0 0.75rem;
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+    }
+
+    .expenses-level {
+        display: block;
+        width: 100%;
+        background-color: #495057;
+        border: 1px solid #495057;
+        height: 0.65rem;
+        border-radius: 0.5rem;
+    }
+
+    .expenses-value {
+        font-size: 1.25rem;
+        font-weight: 300;
+    }
+
+    .expenses-summary {
+        height: 2rem;
+        margin: 0.75rem 0 0.5rem;
+    }
+
+    .expenses-summary span {
+        width: 1.25rem;
+        font-size: 1.25rem;
+        line-height: 1.25rem;
+    }
+
+    #expense-balance__assign-button {
+        height: 3rem;
+        width: 6rem;
+        font-size: 1.25rem;
+        font-weight: 700;
+    }
+
+    #expenses-add__counter {
+        font-size: 1.25rem;
+        text-align: center;
+    }
 }
 
 #backdrop {
@@ -383,10 +446,8 @@ a:focus-visible {
 }
 
 .content-item {
-    /* input animasi drop in and faded */
     max-width: 18rem;
     position: relative;
-    /* padding: 1rem; */
     margin: 0 auto;
 }
 
@@ -397,6 +458,21 @@ a:focus-visible {
     line-height: 1rem;
     margin: 0 0 0.5rem;
 }
+
+@media (min-width: 48rem) {
+    .content-item {
+        max-width: 20rem;
+        width: 100%;
+    }
+
+    .content-description {
+        font-size: 1rem;
+        line-height: 1.5rem;
+        margin: 0 0 1.5rem;
+    }
+}
+
+/* Dynamic content */
 
 #balance,
 #payment,
@@ -441,6 +517,20 @@ a:focus-visible {
     width: 18rem;
 }
 
+@media (min-width: 48rem) {
+    .balance-assign,
+    .balance-action,
+    .payment-assign,
+    .payment-action,
+    .bill-assign,
+    .bill-action,
+    .saving-assign,
+    .saving-action {
+        display: block;
+        width: 100%;
+    }
+}
+
 .balance-action,
 .payment-action,
 .bill-action,
@@ -456,7 +546,7 @@ a:focus-visible {
 #payment-title__value:focus-within,
 #payment-amount__value:focus-within,
 #bill-title__value:focus-within,
-#bill-amount__value:focus-within ,
+#bill-amount__value:focus-within,
 #saving-amount__value:focus-within {
     width: 100%;
     background-color: #343a40;
@@ -477,10 +567,26 @@ a:focus-visible {
     letter-spacing: 0.5px;
 }
 
+button:focus-within,
+button:focus-visible {
+    /* background-color: ; */
+    outline: none;
+    border: 2px solid #f8f0fc;
+    border-radius : 0.5rem;
+}
+
 #save-balance,
 #save-payment,
 #save-bill,
 #save-saving {
     color: #1c7ed6;
     border-radius: 0.5rem;
+}
+
+@media (min-width: 48rem) {
+    .proccess__button {
+        width: 6rem;
+        height: 3rem;
+        font-size: 1.25rem;
+    }
 }

@@ -56,8 +56,9 @@ const createPayments = function () {
             <section id="payment" class="wrapper">
                <div id="payment-set" class="content-item"> 
                     <p class="content-description">
-                        Catat pembayaran saat ini, kamu bisa 
-                        mengukur pengeluaran untuk belanja dll.
+                        Catat pembayaran saat ini. Jadi Kamu bisa 
+                        mengukur pengeluaran saat berbelanja atau  
+                        melakukan pembelian.
                     </p>
                     <div class="payment-assign">
                         <input id="payment-title__value" type="text" placeholder="Lalapan Ayam">
