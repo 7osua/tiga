@@ -169,7 +169,7 @@ a:focus-visible {
     width: 1.5rem;
     height: 1.5rem;
     color: #f8f9fa;
-    /* padding: 0.5rem; */
+    padding: 0.5rem 0;
     margin: 0.25rem auto;
 }
 
