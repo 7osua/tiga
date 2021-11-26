@@ -119,8 +119,8 @@ const createExpenses = function () {
                         <span class="material-icons-round">
                             outbox 
                         </span>
-                        <h2 id="expenses-total__value" class="expenses-value">
-                            Rp. 3.000.000
+                        <h2 id="expense-total__value" class="expenses-value">
+                            Rp. <span>3.000.000</span>
                         <h2>
                     </div>
                 </div>
@@ -131,8 +131,8 @@ const createExpenses = function () {
                         <span class="material-icons-round">
                             account_balance_wallet 
                         </span>
-                        <h2 id="expenses-balance__value" class="expenses-value">
-                            Rp. 3.000.000
+                        <h2 id="expense-balance__value" class="expenses-value">
+                            Rp. <span>3.000.000</span>
                         </h2>
                         <button id="expense-balance__assign-button">
                             + dana

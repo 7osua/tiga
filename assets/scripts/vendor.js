@@ -5,6 +5,8 @@ const savingLink = document.getElementById('content__savings');
 
 const expensesBar = document.getElementById('expenses-minus');
 const balanceBar = document.getElementById('expenses-balance');
+const expenseVal = document.querySelector('#expense-total__value span');
+const balanceVal = document.querySelector('#expense-balance__value span');
 
 const backdrop = document.getElementById('backdrop');
 const balances = document.getElementById('balance');
@@ -79,12 +81,23 @@ const dealtExpense = (expenseAmount) => {
     balanceBar.value -= expenseAmount;
 };
 
+const putValue = (amount) => {
+    expenseVal.textContent = 0;
+    balanceVal.textContent = amount;
+};
+
 const getUserBudget = () => {
     const budgetVal = parseInt(balanceAmount.value);
     isNaN(budgetVal)
         ? alert('Must a number')
         : adjustExpenseBalanceBars(budgetVal);
+    putValue(budgetVal);
+    balanceAmount.value = null;
+    hideDialog();
+    hideBackDrop();
 };
+
+const writeValue = (elment) => {};
 
 balanceBtn.addEventListener('click', showAddBalance);
 paymentLink.addEventListener('click', showPayments);
