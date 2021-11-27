@@ -16,14 +16,15 @@ const bills = document.getElementById('bill');
 const savings = document.getElementById('saving');
 
 const balanceAmount = document.getElementById('balance-amount__value');
-const savingAmount = document.getElementById('saving-amount');
-const paymentTitle = document.getElementById('payment-title');
-const paymentAmount = document.getElementById('payment-amount');
-const billTitle = document.getElementById('bill-title');
-const billAmount = document.getElementById('bill-amount');
+const savingAmount = document.getElementById('saving-amount__value');
+const paymentTitle = document.getElementById('payment-title__value');
+const paymentAmount = document.getElementById('payment-amount__value');
+const billTitle = document.getElementById('bill-title__value');
+const billAmount = document.getElementById('bill-amount__value');
 
 const cancelAssignBtn = document.querySelectorAll('.assign-cancel');
 const saveBalanceBtn = document.getElementById('save-balance');
+const savePayment = document.getElementById('save-payment');
 const saveBillBtn = document.getElementById('save-bill');
 const saveSavingBtn = document.getElementById('save-saving');
 
@@ -31,20 +32,27 @@ function hideBackDrop() {
     backdrop.classList.remove('open');
 }
 
-function showDialog() {
+function showBalanceContent() {
     backdrop.classList.toggle('open');
-    if (balanceBtn) {
-        balances.classList.toggle('open');
-    } else if (paymentLink) {
-        paymentLink.classList.toggle('active');
-        payments.classList.toggle('open');
-    } else if (billLink) {
-        billLink.classList.toggle('active');
-        bills.classList.toggle('open');
-    } else {
-        savingLink.classList.toggle('active');
-        savings.classList.toggle('open');
-    }
+    balances.classList.toggle('open');
+}
+
+function showPaymentContent() {
+    backdrop.classList.toggle('open');
+    paymentLink.classList.toggle('active');
+    payments.classList.toggle('open');
+}
+
+function showBillContent() {
+    backdrop.classList.toggle('open');
+    billLink.classList.toggle('active');
+    bills.classList.toggle('open');
+}
+
+function showSavingContent() {
+    backdrop.classList.toggle('open');
+    savingLink.classList.toggle('active');
+    savings.classList.toggle('open');
 }
 
 function hideDialog() {
@@ -64,39 +72,18 @@ function hideDialog() {
 }
 
 const adjustExpenseBalanceBars = (maxAmount) => {
-    expensesBar.max = maxAmount;
     expensesBar.value = 0;
-    balanceBar.max = maxAmount;
-    balanceBar.value = maxAmount;
-};
-
-const dealtExpense = (expenseAmount) => {
-    expensesBar.value += expenseAmount;
-    balanceBar.value -= expenseAmount;
-};
-
-const putValue = (amount) => {
-    (isNaN(amount) && adjustExpenseBalanceBars(0)) ||
-        adjustExpenseBalanceBars(amount);
-
     expenseVal.textContent = 0;
-    balanceVal.textContent = amount;
+    expensesBar.max = maxAmount;
+    balanceBar.value = maxAmount;
+    balanceVal.textContent = maxAmount;
+    balanceBar.max = maxAmount;
 };
 
-const getUserBudget = () => {
-    const budgetVal = parseInt(balanceAmount.value);
-    balanceAmount.value = null;
-    hideDialog();
-    hideBackDrop();
-    putValue(budgetVal);
+const subtractBalance = (userExpenses) => {
+    expensesBar.value += userExpenses;
+    expenseVal.textContent = expensesBar.value;
+    balanceBar.value -= userExpenses;
+    balanceVal.textContent = balanceBar.value;
+    return balanceBar.value;
 };
-
-addShowContent.forEach((elm) => {
-    elm.addEventListener('click', showDialog);
-});
-
-backdrop.addEventListener('click', hideBackDrop);
-cancelAssignBtn.forEach(function (elem) {
-    elem.addEventListener('click', hideDialog);
-});
-saveBalanceBtn.addEventListener('click', getUserBudget);
