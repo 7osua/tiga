@@ -2,6 +2,7 @@ const balanceBtn = document.getElementById('expense-balance__assign-button');
 const paymentLink = document.getElementById('content__payments');
 const billLink = document.getElementById('content__bills');
 const savingLink = document.getElementById('content__savings');
+const addShowContent = [balanceBtn, paymentLink, billLink, savingLink];
 
 const expensesBar = document.getElementById('expenses-minus');
 const balanceBar = document.getElementById('expenses-balance');
@@ -30,27 +31,20 @@ function hideBackDrop() {
     backdrop.classList.remove('open');
 }
 
-function showAddBalance() {
+function showDialog() {
     backdrop.classList.toggle('open');
-    balances.classList.toggle('open');
-}
-
-function showPayments() {
-    backdrop.classList.toggle('open');
-    paymentLink.classList.toggle('active');
-    payments.classList.toggle('open');
-}
-
-function showBills() {
-    backdrop.classList.toggle('open');
-    billLink.classList.toggle('active');
-    bills.classList.toggle('open');
-}
-
-function showSavings() {
-    backdrop.classList.toggle('open');
-    savingLink.classList.toggle('active');
-    savings.classList.toggle('open');
+    if (balanceBtn) {
+        balances.classList.toggle('open');
+    } else if (paymentLink) {
+        paymentLink.classList.toggle('active');
+        payments.classList.toggle('open');
+    } else if (billLink) {
+        billLink.classList.toggle('active');
+        bills.classList.toggle('open');
+    } else {
+        savingLink.classList.toggle('active');
+        savings.classList.toggle('open');
+    }
 }
 
 function hideDialog() {
@@ -97,15 +91,12 @@ const getUserBudget = () => {
     putValue(budgetVal);
 };
 
-
-balanceBtn.addEventListener('click', showAddBalance);
-paymentLink.addEventListener('click', showPayments);
-billLink.addEventListener('click', showBills);
-savingLink.addEventListener('click', showSavings);
-
-saveBalanceBtn.addEventListener('click', getUserBudget);
+addShowContent.forEach((elm) => {
+    elm.addEventListener('click', showDialog);
+});
 
 backdrop.addEventListener('click', hideBackDrop);
 cancelAssignBtn.forEach(function (elem) {
     elem.addEventListener('click', hideDialog);
 });
+saveBalanceBtn.addEventListener('click', getUserBudget);
