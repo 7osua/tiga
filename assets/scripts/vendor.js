@@ -82,23 +82,21 @@ const dealtExpense = (expenseAmount) => {
 };
 
 const putValue = (amount) => {
+    (isNaN(amount) && adjustExpenseBalanceBars(0)) ||
+        adjustExpenseBalanceBars(amount);
+
     expenseVal.textContent = 0;
     balanceVal.textContent = amount;
 };
 
 const getUserBudget = () => {
     const budgetVal = parseInt(balanceAmount.value);
-
     balanceAmount.value = null;
     hideDialog();
     hideBackDrop();
-
-    (isNaN(budgetVal) && adjustExpenseBalanceBars(0)) ||
-        adjustExpenseBalanceBars(budgetVal);
     putValue(budgetVal);
 };
 
-const writeValue = (elment) => {};
 
 balanceBtn.addEventListener('click', showAddBalance);
 paymentLink.addEventListener('click', showPayments);
@@ -107,7 +105,7 @@ savingLink.addEventListener('click', showSavings);
 
 saveBalanceBtn.addEventListener('click', getUserBudget);
 
+backdrop.addEventListener('click', hideBackDrop);
 cancelAssignBtn.forEach(function (elem) {
     elem.addEventListener('click', hideDialog);
 });
-backdrop.addEventListener('click', hideBackDrop);
