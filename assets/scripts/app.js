@@ -4,52 +4,60 @@ const userPayment = 0;
 const userBill = 0;
 const userReserve = 0;
 
-let currentUserBalance = userBalance;
-let currentUserExpense = userExpense;
-let currentUserPayment = userPayment;
-let currentUserBill = userBill;
-let currentUserReserve = userReserve;
+let currentBalance = userBalance;
+let currentExpense = userExpense;
+let currentPayment = userPayment;
+let currentBill = userBill;
+let currentReserve = userReserve;
 let currentReserveBalance = 0;
 
 adjustExpenseBalanceBars(userBalance);
 
 function assignExpense(typeOfExpense, valOfExpense) {
-    if (currentUserBalance < 0 || currentUserBalance < valOfExpense) {
+    if (currentBalance < 0 || currentBalance < valOfExpense) {
         alert('Anggaran untuk pengeluaranmu tidak cukup !');
         return;
     }
 
     if (typeOfExpense === 'payment') {
-        valOfExpense = currentUserPayment;
+        valOfExpense = currentPayment;
     } else {
-        valOfExpense = currentUserBill;
+        valOfExpense = currentBill;
     }
 
-    currentUserBalance = subtractBalance(valOfExpense);
-    currentUserExpense = addExpenses(valOfExpense);
+    currentBalance = subtractBalance(valOfExpense);
+    currentExpense = addExpenses(valOfExpense);
     hideDialog();
 }
 
 function assignExpensesForPayment() {
-    assignExpense('payment', (currentUserPayment = 200_000));
+    assignExpense('payment', (currentPayment = 200_000));
 }
 
 function assignExpensesForBill() {
-    assignExpense('bill', (currentUserBill = 100_000));
+    assignExpense('bill', (currentBill = 100_000));
 }
 
 function assignReserve() {
-    currentUserReserve = 100_000;
-    adjustReserve(currentUserReserve);
+    currentReserveBalance = 100_000;
+    adjustReserve(currentReserveBalance);
     hideDialog();
 }
 
 function assignReserveToBalance() {
-    currentReserveBalance = currentUserReserve;
-    currentUserBalance = increaseBalance(currentUserReserve);
-    currentUserReserve = descreaseReserve(
-        currentUserReserve,
+    currentReserve = 50_000;
+    if (currentReserveBalance <= 0) {
+        alert('Dana cadangan tidak cukup :' + currentReserveBalance);
+        return;
+    }
+    if (userBalance < currentBalance + currentReserve) {
+        alert('Batas pengeluaran sebesar ' + userBalance);
+        return;
+    }
+    currentBalance = increaseBalance(currentReserve);
+    currentReserveBalance = descreaseReserve(
         currentReserveBalance,
+        currentReserve,
     );
     hideDialog();
 }

@@ -99,13 +99,13 @@ const adjustReserve = (resAmount) => {
 };
 
 const increaseBalance = (resValue) => {
-    balanceBar.value = +balanceBar.value + resValue;
+    balanceBar.value = balanceBar.value + resValue;
     balanceVal.textContent = balanceBar.value;
     return balanceBar.value;
 };
 
-const descreaseReserve = (resValue, resBalanceValue) => {
-    newReserveValue = resValue - resBalanceValue;
-    reserveVal.textContent = newReserveValue;
-    return newReserveValue;
+const descreaseReserve = (resBalanceValue, resValue) => {
+    const newReserveBalanceValue = resBalanceValue - resValue;
+    reserveVal.textContent = newReserveBalanceValue;
+    return newReserveBalanceValue;
 };
