@@ -1,21 +1,35 @@
-const userBalance = 300_000;
+const userBalance = 400_000;
 const userExpenses = 200_000;
 let currentUserBalance = userBalance;
-let currentUserExpenses = userExpenses;
+let currentUserExpense = userExpenses;
 adjustExpenseBalanceBars(userBalance);
 
-function addExpenses() {
-    hideDialog();
-    if (currentUserBalance <= 0 || currentUserBalance < currentUserExpenses) {
-        alert('Uang tra cukup !');
+function assignExpensesForPayment() {
+    if (currentUserBalance <= 0 || currentUserBalance < currentUserExpense) {
+        alert('Anggaran untuk pengeluaranmu tidak cukup !');
+        return;
     }
     setTimeout(() => {
-        currentUserBalance = subtractBalance(currentUserExpenses);
-        console.log(currentUserBalance, currentUserExpenses);
+        currentUserBalance = subtractBalance(currentUserExpense);
+        currentUserExpense = addExpenses(currentUserExpense);
     }, 1000);
+    hideDialog();
 }
 
-savePayment.addEventListener('click', addExpenses);
+function assignExpensesForBill() {
+    if (currentUserBalance <= 0 || currentUserBalance < currentUserExpense) {
+        alert('Anggaran untuk pengeluaranmu tidak cukup !');
+        return;
+    }
+    setTimeout(() => {
+        currentUserBalance = subtractBalance(currentUserExpense);
+        currentUserExpense = addExpenses(currentUserExpense);
+    }, 1000);
+    hideDialog();
+}
+
+savePaymentBtn.addEventListener('click', assignExpensesForPayment);
+saveBillBtn.addEventListener('click', assignExpensesForBill);
 paymentLink.addEventListener('click', showPaymentContent);
 
 balanceBtn.addEventListener('click', showBalanceContent);

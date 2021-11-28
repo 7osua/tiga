@@ -24,7 +24,7 @@ const billAmount = document.getElementById('bill-amount__value');
 
 const cancelAssignBtn = document.querySelectorAll('.assign-cancel');
 const saveBalanceBtn = document.getElementById('save-balance');
-const savePayment = document.getElementById('save-payment');
+const savePaymentBtn = document.getElementById('save-payment');
 const saveBillBtn = document.getElementById('save-bill');
 const saveSavingBtn = document.getElementById('save-saving');
 
@@ -80,9 +80,13 @@ const adjustExpenseBalanceBars = (maxAmount) => {
     balanceBar.max = maxAmount;
 };
 
-const subtractBalance = (userExpenses) => {
+const addExpenses = (userExpenses) => {
     expensesBar.value += userExpenses;
     expenseVal.textContent = expensesBar.value;
+    return expensesBar.value;
+};
+
+const subtractBalance = (userExpenses) => {
     balanceBar.value -= userExpenses;
     balanceVal.textContent = balanceBar.value;
     return balanceBar.value;
