@@ -477,7 +477,7 @@ a:focus-visible {
 #balance,
 #payment,
 #bill,
-#saving {
+#reserve {
     display: none;
 }
 
@@ -493,14 +493,14 @@ a:focus-visible {
     z-index: 4;
 }
 
-#saving {
+#reserve {
     z-index: 5;
 }
 
 #balance-set,
 #payment-set,
 #bill-set,
-#saving-set {
+#reserve-set {
     top: 50%;
     transform: translateY(-50%);
 }
@@ -511,8 +511,8 @@ a:focus-visible {
 .payment-action,
 .bill-assign,
 .bill-action,
-.saving-assign,
-.saving-action {
+.reserve-assign,
+.reserve-action {
     display: block;
     width: 18rem;
 }
@@ -524,8 +524,8 @@ a:focus-visible {
     .payment-action,
     .bill-assign,
     .bill-action,
-    .saving-assign,
-    .saving-action {
+    .reserve-assign,
+    .reserve-action {
         display: block;
         width: 100%;
     }
@@ -534,7 +534,7 @@ a:focus-visible {
 .balance-action,
 .payment-action,
 .bill-action,
-.saving-action {
+.reserve-action {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
@@ -547,7 +547,7 @@ a:focus-visible {
 #payment-amount__value:focus-within,
 #bill-title__value:focus-within,
 #bill-amount__value:focus-within,
-#saving-amount__value:focus-within {
+#reserve-amount__value:focus-within {
     width: 100%;
     background-color: #343a40;
     border: 2px solid #f8f9fa;
@@ -578,7 +578,7 @@ button:focus-visible {
 #save-balance,
 #save-payment,
 #save-bill,
-#save-saving {
+#save-reserve {
     color: #1c7ed6;
     border-radius: 0.5rem;
 }

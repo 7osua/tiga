@@ -1,22 +1,22 @@
 const root = document.getElementById('root');
 
-const createSavings = function () {
+const createReserves = function () {
     root.insertAdjacentHTML(
         'afterbegin',
         `
-            <section id="saving" class="wrapper">
-                <div id="saving-set" class="content-item">
+            <section id="reserve" class="wrapper">
+                <div id="reserve-set" class="content-item">
                     <p class="content-description">
                         Tambah dana cadanganmu. Mulai berjaga-jaga jika 
                         saja pengeluaran lebih besar dari pada saldo mu 
                         saat ini. 
                     </p>
-                    <div class="saving-assign">
-                        <input id="saving-amount__value" type="number" placeholder="+ Rp. 500.000">
+                    <div class="reserve-assign">
+                        <input id="reserve-amount__value" type="number" placeholder="+ Rp. 500.000">
                     </div>
-                    <div class="saving-action">
+                    <div class="reserve-action">
                         <button class="proccess__button assign-cancel">Batal</button>
-                        <button id="save-saving" class="proccess__button">Simpan</button>
+                        <button id="save-reserve" class="proccess__button">Simpan</button>
                      </div>
                 </div>
             </sectio>
@@ -142,8 +142,11 @@ const createExpenses = function () {
                         <span class="material-icons-round">
                             move_to_inbox
                         </span> 
-                        <h2 id="expenses-add__value" class="expenses-value">
-                            Rp. 0
+                        <h2 id="expense-reserve__value" class="expenses-value">
+                            Rp.
+                            <span>
+                                0
+                            </span>
                         </h2>
                         <p id="expenses-add__counter">
                             0
@@ -205,7 +208,7 @@ const createNavigatioRail = function () {
                         </a>
                     </li>
                     <li class="content">
-                        <a id="content__savings">
+                        <a id="content__reserves">
                             <span class="material-icons-round content-icon">
                                savings 
                             </span>    
@@ -229,7 +232,7 @@ const createNavigatioRail = function () {
 };
 
 const initPage = () => {
-    createSavings();
+    createReserves();
     createBills();
     createPayments();
     createExpenses();

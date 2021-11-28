@@ -1,22 +1,22 @@
 const balanceBtn = document.getElementById('expense-balance__assign-button');
 const paymentLink = document.getElementById('content__payments');
 const billLink = document.getElementById('content__bills');
-const savingLink = document.getElementById('content__savings');
-const addShowContent = [balanceBtn, paymentLink, billLink, savingLink];
+const reserveLink = document.getElementById('content__reserves');
 
 const expensesBar = document.getElementById('expenses-minus');
 const balanceBar = document.getElementById('expenses-balance');
 const expenseVal = document.querySelector('#expense-total__value span');
 const balanceVal = document.querySelector('#expense-balance__value span');
+const reserveVal = document.querySelector('#expense-reserve__value span');
 
 const backdrop = document.getElementById('backdrop');
 const balances = document.getElementById('balance');
 const payments = document.getElementById('payment');
 const bills = document.getElementById('bill');
-const savings = document.getElementById('saving');
+const reserves = document.getElementById('reserve');
 
 const balanceAmount = document.getElementById('balance-amount__value');
-const savingAmount = document.getElementById('saving-amount__value');
+const reserveAmount = document.getElementById('reserve-amount__value');
 const paymentTitle = document.getElementById('payment-title__value');
 const paymentAmount = document.getElementById('payment-amount__value');
 const billTitle = document.getElementById('bill-title__value');
@@ -26,7 +26,7 @@ const cancelAssignBtn = document.querySelectorAll('.assign-cancel');
 const saveBalanceBtn = document.getElementById('save-balance');
 const savePaymentBtn = document.getElementById('save-payment');
 const saveBillBtn = document.getElementById('save-bill');
-const saveSavingBtn = document.getElementById('save-saving');
+const saveReserveBtn = document.getElementById('save-reserve');
 
 function showContent(linkItem, content, bkDrop) {
     bkDrop = backdrop;
@@ -51,14 +51,14 @@ function showBillContent() {
     showContent(billLink, bills);
 }
 
-function showSavingContent() {
+function showReserveContent() {
     backdrop.classList.toggle('open');
-    showContent(savingLink, savings);
+    showContent(reserveLink, reserves);
 }
 
 function hideDialog() {
-    if (savings) {
-        savings.classList.remove('open');
+    if (reserves) {
+        reserves.classList.remove('open');
     }
     if (payments) {
         payments.classList.remove('open');
@@ -92,4 +92,20 @@ const subtractBalance = (userExpenses) => {
     balanceBar.value -= userExpenses;
     balanceVal.textContent = balanceBar.value;
     return balanceBar.value;
+};
+
+const adjustReserve = (resAmount) => {
+    reserveVal.textContent = resAmount;
+};
+
+const increaseBalance = (resValue) => {
+    balanceBar.value = +balanceBar.value + resValue;
+    balanceVal.textContent = balanceBar.value;
+    return balanceBar.value;
+};
+
+const descreaseReserve = (resValue, resBalanceValue) => {
+    newReserveValue = resValue - resBalanceValue;
+    reserveVal.textContent = newReserveValue;
+    return newReserveValue;
 };
