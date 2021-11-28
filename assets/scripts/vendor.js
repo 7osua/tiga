@@ -28,31 +28,32 @@ const savePaymentBtn = document.getElementById('save-payment');
 const saveBillBtn = document.getElementById('save-bill');
 const saveSavingBtn = document.getElementById('save-saving');
 
-function hideBackDrop() {
-    backdrop.classList.remove('open');
+function showContent(linkItem, content, bkDrop) {
+    bkDrop = backdrop;
+    if (linkItem) {
+        linkItem.classList.toggle('active');
+    }
+    bkDrop.classList.toggle('open');
+    content.classList.toggle('open');
 }
 
 function showBalanceContent() {
-    backdrop.classList.toggle('open');
-    balances.classList.toggle('open');
+    showContent(null, balances);
 }
 
 function showPaymentContent() {
     backdrop.classList.toggle('open');
-    paymentLink.classList.toggle('active');
-    payments.classList.toggle('open');
+    showContent(paymentLink, payments);
 }
 
 function showBillContent() {
     backdrop.classList.toggle('open');
-    billLink.classList.toggle('active');
-    bills.classList.toggle('open');
+    showContent(billLink, bills);
 }
 
 function showSavingContent() {
     backdrop.classList.toggle('open');
-    savingLink.classList.toggle('active');
-    savings.classList.toggle('open');
+    showContent(savingLink, savings);
 }
 
 function hideDialog() {
@@ -75,6 +76,7 @@ const adjustExpenseBalanceBars = (maxAmount) => {
     expensesBar.value = 0;
     expenseVal.textContent = 0;
     expensesBar.max = maxAmount;
+
     balanceBar.value = maxAmount;
     balanceVal.textContent = maxAmount;
     balanceBar.max = maxAmount;

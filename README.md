@@ -24,6 +24,6 @@ dll . . .
 
 NOTE : Mendefiniskan UI dari data yang akan diproses
 
-> 72 
+> 78 
 
 Start small :dart: Go Solo :rocket:
