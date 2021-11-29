@@ -17,6 +17,7 @@ const reserves = document.getElementById('reserve');
 
 const balanceAmount = document.getElementById('balance-amount__value');
 const reserveAmount = document.getElementById('reserve-amount__value');
+const reserveCounter = document.getElementById('expenses-add__counter');
 const paymentTitle = document.getElementById('payment-title__value');
 const paymentAmount = document.getElementById('payment-amount__value');
 const billTitle = document.getElementById('bill-title__value');
@@ -72,11 +73,17 @@ function hideDialog() {
     backdrop.classList.remove('open');
 }
 
-const adjustExpenseBalanceBars = (maxAmount) => {
-    expensesBar.value = 0;
-    expenseVal.textContent = 0;
-    expensesBar.max = maxAmount;
+const adjustExpenseBars = (maxAmount, totalAmount, amount, hasReserve) => {
+    let totalOfExpense = maxAmount;
+    if (hasReserve) {
+        totalOfExpense = totalAmount;
+    }
+    expensesBar.value = amount;
+    expenseVal.textContent = amount;
+    expensesBar.max = totalOfExpense;
+};
 
+const adjustBalanceBars = (maxAmount) => {
     balanceBar.value = maxAmount;
     balanceVal.textContent = maxAmount;
     balanceBar.max = maxAmount;
@@ -99,13 +106,19 @@ const adjustReserve = (resAmount) => {
 };
 
 const increaseBalance = (resValue) => {
-    balanceBar.value = balanceBar.value + resValue;
+    balanceBar.value += resValue;
     balanceVal.textContent = balanceBar.value;
     return balanceBar.value;
 };
 
 const descreaseReserve = (resBalanceValue, resValue) => {
-    const newReserveBalanceValue = resBalanceValue - resValue;
-    reserveVal.textContent = newReserveBalanceValue;
-    return newReserveBalanceValue;
+    resBalanceValue -= resValue;
+    reserveVal.textContent = resBalanceValue;
+    return resBalanceValue;
+};
+
+const changeReserveCounter = (countVal) => {
+    let val = countVal;
+    reserveCounter.textContent = `\n \u21A5 : ${val} \n`;
+    return val;
 };
