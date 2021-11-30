@@ -77,8 +77,8 @@ function assignExpensesForBill() {
 function assignReserve() {
     currentReserveBalance = userReserve;
     adjustReserve(currentReserveBalance);
-    preventReserve();
     hideDialog();
+    preventReserve();
 }
 
 function assignReserveToBalance() {
