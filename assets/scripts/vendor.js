@@ -122,3 +122,14 @@ const changeReserveCounter = (countVal) => {
     reserveCounter.textContent = `\n \u21A5 : ${val} \n`;
     return val;
 };
+
+const resetValue = (maxAmount, value) => {
+    balanceBar.value = maxAmount;
+    balanceBar.max = maxAmount;
+    balanceVal.textContent = maxAmount;
+    expensesBar.value = value;
+    expensesBar.max = maxAmount;
+    expenseVal.textContent = value;
+    reserveCounter.textContent = value;
+    reserveVal.textContent = value;
+};

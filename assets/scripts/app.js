@@ -8,21 +8,39 @@ let currentBalance = userBalance;
 let currentExpense = userExpense;
 let currentPayment = userPayment;
 let currentBill = userBill;
-let currentReserve = userReserve;
+let currentReserve = 0;
 let currentReserveBalance = userReserve;
 let currentTotalExpenses = userBalance;
 
-let userHasReserve = false;
-let userReserveCounter = 0;
-let maxToReserve = 2;
+let hasReserve = false;
+let reserveCount = 0;
+let maxToReserve = 4;
 
 adjustExpenseBars(
     userBalance,
     currentTotalExpenses,
     currentExpense,
-    userHasReserve,
+    hasReserve,
 );
 adjustBalanceBars(userBalance);
+
+function resetUserValue() {
+    if (currentBalance === 0 && currentReserveBalance === 0) {
+        setTimeout(() => {
+            resetValue(userBalance, 0);
+            currentBill = userBill;
+            currentPayment = 0;
+            currentExpense = 0;
+            currentBalance = userBalance;
+            currentReserve = 0;
+            currentReserveBalance = userReserve;
+            currentTotalExpenses = userBalance;
+            hasReserve = false;
+            reserveCount = 0;
+            maxToReserve = 0;
+        }, 1500);
+    }
+}
 
 function assignExpense(typeOfExpense, valOfExpense) {
     if (currentBalance < 0 || currentBalance < valOfExpense) {
@@ -38,6 +56,7 @@ function assignExpense(typeOfExpense, valOfExpense) {
 
     currentBalance = subtractBalance(valOfExpense);
     currentExpense = addExpenses(valOfExpense);
+    resetUserValue();
     hideDialog();
 }
 
@@ -55,7 +74,7 @@ function assignReserve() {
 }
 
 function assignReserveToBalance() {
-    userHasReserve = true;
+    hasReserve = true;
     currentReserve = 50_000;
     if (currentReserveBalance <= 0) {
         alert('Dana cadangan tidak cukup :' + currentReserveBalance);
@@ -66,21 +85,21 @@ function assignReserveToBalance() {
         alert('Batas pengeluaran sebesar ' + userBalance);
         return;
     }
-    if (maxToReserve === userReserveCounter) {
-        alert('Kamu sudah melewati batas pengeluaran mu');
+    if (maxToReserve === reserveCount) {
+        alert('Kamu sudah melewati batas batas isi ulang');
         return;
     }
     currentTotalExpenses = userBalance + userReserve;
-    if (userHasReserve) {
-        ++userReserveCounter;
+    if (hasReserve) {
+        ++reserveCount;
         adjustExpenseBars(
             userBalance,
             currentTotalExpenses,
             currentExpense,
-            userHasReserve,
+            hasReserve,
         );
     }
-    userReserveCounter = changeReserveCounter(userReserveCounter);
+    reserveCount = changeReserveCounter(reserveCount);
     currentBalance = increaseBalance(currentReserve);
     currentReserveBalance = descreaseReserve(
         currentReserveBalance,
