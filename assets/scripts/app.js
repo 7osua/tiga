@@ -37,7 +37,7 @@ function resetUserValue() {
             currentTotalExpenses = userBalance;
             hasReserve = false;
             reserveCount = 0;
-            maxToReserve = 0;
+            maxToReserve = 4;
         }, 1500);
     }
 }
