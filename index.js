@@ -9,7 +9,7 @@ const createReserves = function () {
                     <p class="content-description">
                         Tambah dana cadanganmu. Mulai berjaga-jaga jika 
                         saja pengeluaran lebih besar dari pada saldo mu 
-                        saat ini. <strong> Dana cadangan hanya bisa 1X </strong> 
+                        saat ini. <strong> Dana cadangan hanya bisa 1X dimasukkan !</strong> 
                     </p>
                     <div class="reserve-assign">
                         <input id="reserve-amount__value" type="number" placeholder="+ Rp. 500.000">

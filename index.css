@@ -164,6 +164,12 @@ a:focus-visible {
     color: #868e96;
 }
 
+.deactive:hover > .content-icon,
+.deactive > span,
+.deactive > p {
+    color: #495057;
+}
+
 .content-icon {
     display: block;
     width: 1.5rem;
@@ -368,7 +374,7 @@ a:focus-visible {
 #expense-balance__assign-button:focus-visible {
     outline: none;
     border: 2px solid #f8f0fc;
-    border-radius : 0.5rem;
+    border-radius: 0.5rem;
 }
 
 #expenses-add__counter {
@@ -572,7 +578,7 @@ button:focus-visible {
     /* background-color: ; */
     outline: none;
     border: 2px solid #f8f0fc;
-    border-radius : 0.5rem;
+    border-radius: 0.5rem;
 }
 
 #save-balance,

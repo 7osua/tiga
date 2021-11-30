@@ -133,3 +133,13 @@ const resetValue = (maxAmount, value) => {
     reserveCounter.textContent = value;
     reserveVal.textContent = value;
 };
+
+const reserveEvent = (elmLink, elmBtn) => {
+    elmBtn.style.display = 'block';
+    elmLink.classList.remove('deactive');
+};
+
+const preventReserve = () => {
+    saveReserveBtn.style.display = 'none';
+    reserveLink.classList.replace('active', 'deactive');
+};

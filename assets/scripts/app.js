@@ -1,7 +1,7 @@
 const userBalance = 300_000;
 const userExpense = 0;
-const userPayment = 0;
-const userBill = 0;
+const userPayment = 200_000;
+const userBill = 100_000;
 const userReserve = 200_000;
 
 let currentBalance = userBalance;
@@ -9,7 +9,7 @@ let currentExpense = userExpense;
 let currentPayment = userPayment;
 let currentBill = userBill;
 let currentReserve = 0;
-let currentReserveBalance = userReserve;
+let currentReserveBalance = 0;
 let currentTotalExpenses = userBalance;
 
 let hasReserve = false;
@@ -25,19 +25,25 @@ adjustExpenseBars(
 adjustBalanceBars(userBalance);
 
 function resetUserValue() {
-    if (currentBalance === 0 && currentReserveBalance === 0) {
+    if (
+        currentBalance === 0 &&
+        hasReserve === true &&
+        currentReserveBalance === 0
+    ) {
         setTimeout(() => {
             resetValue(userBalance, 0);
+
             currentBill = userBill;
             currentPayment = 0;
             currentExpense = 0;
             currentBalance = userBalance;
             currentReserve = 0;
-            currentReserveBalance = userReserve;
+            currentReserveBalance = 0;
             currentTotalExpenses = userBalance;
             hasReserve = false;
             reserveCount = 0;
             maxToReserve = 4;
+            reserveEvent(reserveLink, saveReserveBtn);
         }, 1500);
     }
 }
@@ -61,15 +67,17 @@ function assignExpense(typeOfExpense, valOfExpense) {
 }
 
 function assignExpensesForPayment() {
-    assignExpense('payment', (currentPayment = 200_000));
+    assignExpense('payment', (currentPayment = userPayment));
 }
 
 function assignExpensesForBill() {
-    assignExpense('bill', (currentBill = 100_000));
+    assignExpense('bill', (currentBill = userBill));
 }
 
 function assignReserve() {
+    currentReserveBalance = userReserve;
     adjustReserve(currentReserveBalance);
+    preventReserve();
     hideDialog();
 }
 
