@@ -75,8 +75,8 @@ function hideDialog() {
 
 const initContent = () => {
     showContent(null, balances);
-    cancelAssignBtn[0].style.display = 'none';
     initBalance();
+    cancelAssignBtn[0].style.display = 'none';
 };
 
 const adjustExpenseBars = (maxAmount, totalAmount, amount, hasReserve) => {
@@ -158,9 +158,7 @@ const getBalance = (elm) => {
 const initBalance = () => {
     balanceAmount.addEventListener('change', (e) => {
         maxExpense = e.target.value;
-        e.target.value = null;
     });
-    cancelAssignBtn[0].style.display = 'block';
 };
 
 window.addEventListener('load', initContent);

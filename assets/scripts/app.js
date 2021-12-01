@@ -63,6 +63,8 @@ function assignReserveToBalance() {
             currentExpense,
             hasReserve,
         );
+        balanceAmount.value = null;
+        cancelAssignBtn[0].style.display = 'block';
     }
     hideDialog();
 }
@@ -77,17 +79,19 @@ function resetUserValue() {
         setTimeout(() => {
             resetValue(userBalance, 0);
 
-            currentBill = userBill;
+            currentBill = 0;
             currentPayment = 0;
             currentExpense = 0;
-            currentBalance = userBalance;
+            currentBalance = 0;
             currentReserve = 0;
             currentReserveBalance = 0;
-            currentTotalExpenses = userBalance;
+            currentTotalExpenses = 0;
             hasReserve = false;
             reserveCount = 0;
             maxToReserve = 4;
+            hasInitialized = false;
             reserveEvent(reserveLink, saveReserveBtn);
+            initContent();
         }, 1500);
     }
 }
