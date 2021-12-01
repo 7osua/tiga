@@ -19,6 +19,21 @@ let hasReserve = false;
 let reserveCount = 0;
 let maxToReserve = 4;
 
+function notSpecified(val) {
+    if (isNaN(val) || val <= 0) {
+        return 500_000;
+    }
+    return val;
+}
+
+function initializedBalance() {
+    hasInitialized = true;
+    maxExpense = parseInt(maxExpense);
+    maxExpense = notSpecified(maxExpense);
+    userBalance = maxExpense;
+    currentBalance = maxExpense;
+}
+
 function assignReserveToBalance() {
     if (hasInitialized) {
         hasReserve = true;
@@ -53,9 +68,7 @@ function assignReserveToBalance() {
             currentReserve,
         );
     } else {
-        hasInitialized = true;
-        userBalance = parseInt(maxExpense);
-        currentBalance = parseInt(maxExpense);
+        initializedBalance();
         adjustBalanceBars(userBalance);
         adjustExpenseBars(
             userBalance,
@@ -63,7 +76,7 @@ function assignReserveToBalance() {
             currentExpense,
             hasReserve,
         );
-        balanceAmount.value = null;
+        resetInput(balanceAmount);
         cancelAssignBtn[0].style.display = 'block';
     }
     hideDialog();
@@ -78,7 +91,6 @@ function resetUserValue() {
     ) {
         setTimeout(() => {
             resetValue(userBalance, 0);
-
             currentBill = 0;
             currentPayment = 0;
             currentExpense = 0;

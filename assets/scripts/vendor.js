@@ -60,15 +60,21 @@ function showReserveContent() {
 function hideDialog() {
     if (reserves) {
         reserves.classList.remove('open');
+        resetInput(reserveAmount);
     }
     if (payments) {
         payments.classList.remove('open');
+        resetInput(paymentTitle);
+        resetInput(paymentAmount);
     }
     if (bills) {
         bills.classList.remove('open');
+        resetInput(billTitle);
+        resetInput(billAmount);
     }
     if (balances) {
         balances.classList.remove('open');
+        resetInput(balanceAmount);
     }
     backdrop.classList.remove('open');
 }
@@ -125,7 +131,12 @@ const descreaseReserve = (resBalanceValue, resValue) => {
 
 const changeReserveCounter = (countVal) => {
     let val = countVal;
-    reserveCounter.textContent = `\n \u21A5 : ${val} \n`;
+    reserveCounter.innerHTML =
+        '<span class="material-icons-round">' +
+        'upgrade' +
+        '</span>' +
+        ' : ' +
+        `${val}`;
     return val;
 };
 
@@ -159,6 +170,10 @@ const initBalance = () => {
     balanceAmount.addEventListener('change', (e) => {
         maxExpense = e.target.value;
     });
+};
+
+const resetInput = (elm) => {
+    elm.value = null;
 };
 
 window.addEventListener('load', initContent);

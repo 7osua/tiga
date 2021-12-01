@@ -334,9 +334,12 @@ a:focus-visible {
 
 .expenses-summary span {
     width: 1rem;
-    /* height: 1.25rem; */
     font-size: 1.15rem;
     line-height: 1.25rem;
+}
+
+.expenses-summary span.material-icons-round {
+    vertical-align: bottom;
 }
 
 .expenses-summary {

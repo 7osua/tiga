@@ -80,7 +80,7 @@ const createBalance = function () {
         `
             <section id="balance" class="wrapper">
                 <div id="balance-set" class="content-item">
-                    <p class="content-description">Besaran dana pengeluaran mu untuk saat ini.</p>
+                    <p class="content-description">Maksimal atau batas pengeluaran mu untuk saat ini.</p>
                     <div class="balance-assign">
                         <input id="balance-amount__value" type="number" placeholder="Anggaran . . .">
                     </div>
