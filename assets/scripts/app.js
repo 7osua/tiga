@@ -1,3 +1,4 @@
+let maxExpense = getBalance();
 const userBalance = 300_000;
 const userExpense = 0;
 const userPayment = 200_000;

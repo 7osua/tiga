@@ -151,5 +151,5 @@ const preventReserve = () => {
 };
 
 const getBalance = () => {
-    return balanceAmount.value;
+    return balanceAmount.target.value;
 };
