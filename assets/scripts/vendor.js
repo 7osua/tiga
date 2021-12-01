@@ -156,9 +156,11 @@ const getBalance = (elm) => {
 };
 
 const initBalance = () => {
-    balanceAmount.addEventListener('change', (e)=>{
-        console.log(e.target.value);
+    balanceAmount.addEventListener('change', (e) => {
+        maxExpense = e.target.value;
+        e.target.value = null;
     });
+    cancelAssignBtn[0].style.display = 'block';
 };
 
 window.addEventListener('load', initContent);

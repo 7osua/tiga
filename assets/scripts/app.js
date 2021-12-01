@@ -1,11 +1,13 @@
-let maxExpense = getBalance(balanceAmount);
-const userBalance = 300_000;
+let hasInitialized = false;
+let maxExpense;
+
+let userBalance = 0;
 const userExpense = 0;
 const userPayment = 200_000;
 const userBill = 100_000;
 const userReserve = 200_000;
 
-let currentBalance = userBalance;
+let currentBalance = 0;
 let currentExpense = userExpense;
 let currentPayment = userPayment;
 let currentBill = userBill;
@@ -18,24 +20,43 @@ let reserveCount = 0;
 let maxToReserve = 4;
 
 function assignReserveToBalance() {
-    hasReserve = true;
-    currentReserve = 50_000;
-    if (currentReserveBalance <= 0) {
-        alert('Dana cadangan tidak cukup :' + currentReserveBalance);
-        currentReserveBalance = 0;
-        return;
-    }
-    if (userBalance < currentBalance + currentReserve) {
-        alert('Batas pengeluaran sebesar ' + userBalance);
-        return;
-    }
-    if (maxToReserve === reserveCount) {
-        alert('Kamu sudah melewati batas batas isi ulang');
-        return;
-    }
-    currentTotalExpenses = userBalance + userReserve;
-    if (hasReserve) {
-        ++reserveCount;
+    if (hasInitialized) {
+        hasReserve = true;
+        currentReserve = 50_000;
+        if (currentReserveBalance <= 0) {
+            alert('Dana cadangan tidak cukup :' + currentReserveBalance);
+            currentReserveBalance = 0;
+            return;
+        }
+        if (userBalance < currentBalance + currentReserve) {
+            alert('Batas pengeluaran sebesar ' + userBalance);
+            return;
+        }
+        if (maxToReserve === reserveCount) {
+            alert('Kamu sudah melewati batas batas isi ulang');
+            return;
+        }
+        currentTotalExpenses = userBalance + userReserve;
+        if (hasReserve) {
+            ++reserveCount;
+            adjustExpenseBars(
+                userBalance,
+                currentTotalExpenses,
+                currentExpense,
+                hasReserve,
+            );
+        }
+        reserveCount = changeReserveCounter(reserveCount);
+        currentBalance = increaseBalance(currentReserve);
+        currentReserveBalance = descreaseReserve(
+            currentReserveBalance,
+            currentReserve,
+        );
+    } else {
+        hasInitialized = true;
+        userBalance = parseInt(maxExpense);
+        currentBalance = parseInt(maxExpense);
+        adjustBalanceBars(userBalance);
         adjustExpenseBars(
             userBalance,
             currentTotalExpenses,
@@ -43,28 +64,15 @@ function assignReserveToBalance() {
             hasReserve,
         );
     }
-    reserveCount = changeReserveCounter(reserveCount);
-    currentBalance = increaseBalance(currentReserve);
-    currentReserveBalance = descreaseReserve(
-        currentReserveBalance,
-        currentReserve,
-    );
     hideDialog();
 }
-
-adjustBalanceBars(userBalance);
-adjustExpenseBars(
-    userBalance,
-    currentTotalExpenses,
-    currentExpense,
-    hasReserve,
-);
 
 function resetUserValue() {
     if (
         currentBalance === 0 &&
         hasReserve === true &&
-        currentReserveBalance === 0
+        currentReserveBalance === 0 &&
+        hasInitialized
     ) {
         setTimeout(() => {
             resetValue(userBalance, 0);
