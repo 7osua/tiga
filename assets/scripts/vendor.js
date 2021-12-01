@@ -73,6 +73,11 @@ function hideDialog() {
     backdrop.classList.remove('open');
 }
 
+const initContent = () => {
+    showContent(null, balances);
+    cancelAssignBtn[0].style.display = 'none';
+};
+
 const adjustExpenseBars = (maxAmount, totalAmount, amount, hasReserve) => {
     let totalOfExpense = maxAmount;
     if (hasReserve) {
@@ -142,5 +147,9 @@ const reserveEvent = (elmLink, elmBtn) => {
 const preventReserve = () => {
     saveReserveBtn.style.display = 'none';
     reserveLink.classList.remove('active');
-    reserveLink.classList.toggle('deactive')
+    reserveLink.classList.toggle('deactive');
+};
+
+const getBalance = () => {
+    return balanceAmount.value;
 };

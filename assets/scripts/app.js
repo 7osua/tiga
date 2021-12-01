@@ -16,13 +16,48 @@ let hasReserve = false;
 let reserveCount = 0;
 let maxToReserve = 4;
 
+function assignReserveToBalance() {
+    hasReserve = true;
+    currentReserve = 50_000;
+    if (currentReserveBalance <= 0) {
+        alert('Dana cadangan tidak cukup :' + currentReserveBalance);
+        currentReserveBalance = 0;
+        return;
+    }
+    if (userBalance < currentBalance + currentReserve) {
+        alert('Batas pengeluaran sebesar ' + userBalance);
+        return;
+    }
+    if (maxToReserve === reserveCount) {
+        alert('Kamu sudah melewati batas batas isi ulang');
+        return;
+    }
+    currentTotalExpenses = userBalance + userReserve;
+    if (hasReserve) {
+        ++reserveCount;
+        adjustExpenseBars(
+            userBalance,
+            currentTotalExpenses,
+            currentExpense,
+            hasReserve,
+        );
+    }
+    reserveCount = changeReserveCounter(reserveCount);
+    currentBalance = increaseBalance(currentReserve);
+    currentReserveBalance = descreaseReserve(
+        currentReserveBalance,
+        currentReserve,
+    );
+    hideDialog();
+}
+
+adjustBalanceBars(userBalance);
 adjustExpenseBars(
     userBalance,
     currentTotalExpenses,
     currentExpense,
     hasReserve,
 );
-adjustBalanceBars(userBalance);
 
 function resetUserValue() {
     if (
@@ -80,42 +115,6 @@ function assignReserve() {
     hideDialog();
     preventReserve();
 }
-
-function assignReserveToBalance() {
-    hasReserve = true;
-    currentReserve = 50_000;
-    if (currentReserveBalance <= 0) {
-        alert('Dana cadangan tidak cukup :' + currentReserveBalance);
-        currentReserveBalance = 0;
-        return;
-    }
-    if (userBalance < currentBalance + currentReserve) {
-        alert('Batas pengeluaran sebesar ' + userBalance);
-        return;
-    }
-    if (maxToReserve === reserveCount) {
-        alert('Kamu sudah melewati batas batas isi ulang');
-        return;
-    }
-    currentTotalExpenses = userBalance + userReserve;
-    if (hasReserve) {
-        ++reserveCount;
-        adjustExpenseBars(
-            userBalance,
-            currentTotalExpenses,
-            currentExpense,
-            hasReserve,
-        );
-    }
-    reserveCount = changeReserveCounter(reserveCount);
-    currentBalance = increaseBalance(currentReserve);
-    currentReserveBalance = descreaseReserve(
-        currentReserveBalance,
-        currentReserve,
-    );
-    hideDialog();
-}
-
 savePaymentBtn.addEventListener('click', assignExpensesForPayment);
 saveBillBtn.addEventListener('click', assignExpensesForBill);
 saveReserveBtn.addEventListener('click', assignReserve);
