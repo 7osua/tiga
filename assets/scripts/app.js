@@ -6,11 +6,13 @@ const userExpense = 0;
 const userPayment = 200_000;
 const userBill = 100_000;
 const userReserve = 200_000;
+const typeForPay = 'payment';
+const typeForBill = 'bill';
 
 let currentBalance = 0;
-let currentExpense = userExpense;
-let currentPayment = userPayment;
-let currentBill = userBill;
+let currentExpense = 0;
+let currentPayment = 0;
+let currentBill = 0;
 let currentReserve = 0;
 let currentReserveBalance = 0;
 let currentTotalExpenses = userBalance;
@@ -18,6 +20,8 @@ let currentTotalExpenses = userBalance;
 let hasReserve = false;
 let reserveCount = 0;
 let maxToReserve = 4;
+
+const transactionLogs = [];
 
 function notSpecified(val) {
     if (isNaN(val) || val <= 0) {
@@ -54,12 +58,6 @@ function assignReserveToBalance() {
         currentTotalExpenses = userBalance + userReserve;
         if (hasReserve) {
             ++reserveCount;
-            adjustExpenseBars(
-                userBalance,
-                currentTotalExpenses,
-                currentExpense,
-                hasReserve,
-            );
         }
         reserveCount = changeReserveCounter(reserveCount);
         currentBalance = increaseBalance(currentReserve);
@@ -70,15 +68,15 @@ function assignReserveToBalance() {
     } else {
         initializedBalance();
         adjustBalanceBars(userBalance);
-        adjustExpenseBars(
-            userBalance,
-            currentTotalExpenses,
-            currentExpense,
-            hasReserve,
-        );
         resetInput(balanceAmount);
         cancelAssignBtn[0].style.display = 'block';
     }
+    adjustExpenseBars(
+        userBalance,
+        currentTotalExpenses,
+        currentExpense,
+        hasReserve,
+    );
     hideDialog();
 }
 
@@ -108,30 +106,47 @@ function resetUserValue() {
     }
 }
 
-function assignExpense(typeOfExpense, valOfExpense) {
-    if (currentBalance < 0 || currentBalance < valOfExpense) {
+function writeToLog(typeTran, amount, total, balance, expense) {
+    const transactionDetail = { type: '', amount: 0, total:0, expenses: 0, balance: 0 };
+    if (typeTran === typeForPay) {
+        transactionDetail.type = typeForPay;
+    } else if (typeTran === typeForBill) {
+        transactionDetail.type = typeForBill;
+    }
+    transactionDetail.amount = amount;
+    transactionDetail.total = total;
+    transactionDetail.balance = balance;
+    transactionDetail.expenses = expense;
+    transactionLogs.push(transactionDetail);
+    console.table(transactionLogs);
+}
+
+function assignExpense(typeExpense, currExpense, totalExpense) {
+    if (currentBalance < 0 || currentBalance < currExpense) {
         alert('Anggaran untuk pengeluaranmu tidak cukup !');
         return;
     }
-
-    if (typeOfExpense === 'payment') {
-        valOfExpense = currentPayment;
-    } else {
-        valOfExpense = currentBill;
-    }
-
-    currentBalance = subtractBalance(valOfExpense);
-    currentExpense = addExpenses(valOfExpense);
+    currentExpense = addExpenses(currExpense);
+    currentBalance = subtractBalance(currExpense);
+    writeToLog(
+        typeExpense,
+        currExpense,
+        totalExpense,
+        currentBalance,
+        currentExpense,
+    );
     resetUserValue();
     hideDialog();
 }
 
 function assignExpensesForPayment() {
-    assignExpense('payment', (currentPayment = userPayment));
+    currentPayment += userPayment;
+    assignExpense(typeForPay, userPayment, currentPayment);
 }
 
 function assignExpensesForBill() {
-    assignExpense('bill', (currentBill = userBill));
+    currentBill += userBill;
+    assignExpense(typeForBill, userBill, currentBill);
 }
 
 function assignReserve() {
@@ -140,6 +155,7 @@ function assignReserve() {
     hideDialog();
     preventReserve();
 }
+
 savePaymentBtn.addEventListener('click', assignExpensesForPayment);
 saveBillBtn.addEventListener('click', assignExpensesForBill);
 saveReserveBtn.addEventListener('click', assignReserve);
