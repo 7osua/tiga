@@ -1,18 +1,19 @@
 let hasInitialized = false;
 let maxExpense;
 
+let title = '';
 let userBalance = 0;
+let userPayment = 0;
+let userBill = 0;
 const userExpense = 0;
-const userPayment = 200_000;
-const userBill = 100_000;
 const userReserve = 200_000;
 const typeForPay = 'payment';
 const typeForBill = 'bill';
 
 let currentBalance = 0;
-let currentExpense = 0;
 let currentPayment = 0;
 let currentBill = 0;
+let currentExpense = 0;
 let currentReserve = 0;
 let currentReserveBalance = 0;
 let currentTotalExpenses = userBalance;
@@ -25,7 +26,7 @@ const transactionLogs = [];
 
 function notSpecified(val) {
     if (isNaN(val) || val <= 0) {
-        return 500_000;
+        return 100_000;
     }
     return val;
 }
@@ -36,6 +37,21 @@ function initializedBalance() {
     maxExpense = notSpecified(maxExpense);
     userBalance = maxExpense;
     currentBalance = maxExpense;
+}
+
+function initializedExpense(typeExpense) {
+    if (!title || title === '' || title === undefined) {
+        title = 'Default';
+    }
+    if (typeExpense === typeForPay) {
+        title += ' For Paying';
+        currentPayment = parseInt(currentPayment);
+        currentPayment = notSpecified(currentPayment);
+    } else {
+        title += ' For Billing';
+        currentBill = parseInt(currentBill);
+        currentBill = notSpecified(currentBill);
+    }
 }
 
 function assignReserveToBalance() {
@@ -106,13 +122,21 @@ function resetUserValue() {
     }
 }
 
-function writeToLog(typeTran, amount, total, balance, expense) {
-    const transactionDetail = { type: '', amount: 0, total:0, expenses: 0, balance: 0 };
+function writeToLog(typeTran, title, amount, total, balance, expense) {
+    const transactionDetail = {
+        type: '',
+        title: '',
+        amount: 0,
+        total: 0,
+        expenses: 0,
+        balance: 0,
+    };
     if (typeTran === typeForPay) {
         transactionDetail.type = typeForPay;
     } else if (typeTran === typeForBill) {
         transactionDetail.type = typeForBill;
     }
+    transactionDetail.title = title;
     transactionDetail.amount = amount;
     transactionDetail.total = total;
     transactionDetail.balance = balance;
@@ -121,7 +145,7 @@ function writeToLog(typeTran, amount, total, balance, expense) {
     console.table(transactionLogs);
 }
 
-function assignExpense(typeExpense, currExpense, totalExpense) {
+function assignExpense(typeExpense, expenseTitle, currExpense, totalExpense) {
     if (currentBalance < 0 || currentBalance < currExpense) {
         alert('Anggaran untuk pengeluaranmu tidak cukup !');
         return;
@@ -130,6 +154,7 @@ function assignExpense(typeExpense, currExpense, totalExpense) {
     currentBalance = subtractBalance(currExpense);
     writeToLog(
         typeExpense,
+        expenseTitle,
         currExpense,
         totalExpense,
         currentBalance,
@@ -140,13 +165,20 @@ function assignExpense(typeExpense, currExpense, totalExpense) {
 }
 
 function assignExpensesForPayment() {
-    currentPayment += userPayment;
-    assignExpense(typeForPay, userPayment, currentPayment);
+    [currentTitle, currentPayment] = getExpenseValue(
+        paymentTitle,
+        paymentAmount,
+    );
+    initializedExpense(typeForPay);
+    userPayment += currentPayment;
+    assignExpense(typeForPay, currentTitle, currentPayment, userPayment);
 }
 
 function assignExpensesForBill() {
-    currentBill += userBill;
-    assignExpense(typeForBill, userBill, currentBill);
+    [currentTitle, currentBill] = getExpenseValue(billTitle, billAmount);
+    initializedExpense(typeForBill);
+    userBill += currentBill;
+    assignExpense(typeForBill, currentTitle, currentBill, userBill);
 }
 
 function assignReserve() {

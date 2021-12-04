@@ -162,14 +162,18 @@ const preventReserve = () => {
     reserveLink.classList.toggle('deactive');
 };
 
-const getBalance = (elm) => {
-    return elm.value;
+const initBalance = () => {
+    if (balanceAmount) {
+        balanceAmount.addEventListener('change', (e) => {
+            maxExpense = e.target.value;
+        });
+    }
 };
 
-const initBalance = () => {
-    balanceAmount.addEventListener('change', (e) => {
-        maxExpense = e.target.value;
-    });
+const getExpenseValue = (elmTitle, elemAmount) => {
+    const title = elmTitle.value;
+    const amount = elemAmount.value;
+    return [title, amount];
 };
 
 const resetInput = (elm) => {
