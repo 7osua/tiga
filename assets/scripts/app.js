@@ -40,15 +40,15 @@ function initializedBalance() {
 }
 
 function initializedExpense(typeExpense) {
-    if (!title || title === '' || title === undefined) {
-        title = 'Default';
+    if (!currentTitle || currentTitle === '' || currentTitle === undefined) {
+        currentTitle = 'Default';
     }
     if (typeExpense === typeForPay) {
-        title += ' For Paying';
+        currentTitle += ' For Paying';
         currentPayment = parseInt(currentPayment);
         currentPayment = notSpecified(currentPayment);
     } else {
-        title += ' For Billing';
+        currentTitle += ' For Billing';
         currentBill = parseInt(currentBill);
         currentBill = notSpecified(currentBill);
     }
