@@ -144,11 +144,11 @@ const resetValue = (maxAmount, value) => {
     balanceBar.value = maxAmount;
     balanceBar.max = maxAmount;
     balanceVal.textContent = maxAmount;
-    expensesBar.value = value;
     expensesBar.max = maxAmount;
     expenseVal.textContent = value;
     reserveCounter.textContent = value;
     reserveVal.textContent = value;
+    expensesBar.value = value;
 };
 
 const reserveEvent = (elmLink, elmBtn) => {
@@ -174,6 +174,16 @@ const getExpenseValue = (elmTitle, elemAmount) => {
     const title = elmTitle.value;
     const amount = elemAmount.value;
     return [title, amount];
+};
+
+const getReserveValue = (elemAmount) => {
+    const amount = elemAmount.value;
+    return amount;
+}
+
+const getReserveBalanceValue = (elemAmount) => {
+    const amount = elemAmount.value;
+    return amount;
 };
 
 const resetInput = (elm) => {
