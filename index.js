@@ -1,5 +1,26 @@
 const root = document.getElementById('root');
 
+const createSnackbar = function () {
+    root.insertAdjacentHTML(
+        'beforeend',
+        `  
+            <div id="snackbar" class=" default">
+                <span class="snackbar-indicator"></span>
+                <div class="snackbar-content">
+                    <p class="snackbar-message">Pesan ini akan muncul sebagai pesan singkat</p>
+                </div>
+                <div class="snackbar-action">
+                    <button>
+                        <span class="material-icons-round">
+                            close
+                        </span>
+                    </button>
+                </div>
+            
+            </div>
+        `,
+    );
+};
 const createReserves = function () {
     root.insertAdjacentHTML(
         'afterbegin',
@@ -232,6 +253,7 @@ const createNavigatioRail = function () {
 };
 
 const initPage = () => {
+    createSnackbar();
     createReserves();
     createBills();
     createPayments();
