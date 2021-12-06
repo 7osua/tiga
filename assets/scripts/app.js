@@ -143,7 +143,6 @@ function writeToLog(typeTran, title, amount, total, balance, expense) {
     transactionDetail.balance = balance;
     transactionDetail.expenses = expense;
     transactionLogs.push(transactionDetail);
-    console.table(transactionLogs);
 }
 
 function assignExpense(typeExpense, expenseTitle, currExpense, totalExpense) {
