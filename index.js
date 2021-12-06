@@ -4,7 +4,7 @@ const createSnackbar = function () {
     root.insertAdjacentHTML(
         'beforeend',
         `  
-            <div id="snackbar" class=" default">
+            <div id="snackbar" >
                 <span class="snackbar-indicator"></span>
                 <div class="snackbar-content">
                     <p class="snackbar-message">Pesan ini akan muncul sebagai pesan singkat</p>

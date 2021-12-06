@@ -1,12 +1,15 @@
 let hasInitialized = false;
 let maxExpense;
+let isDefault = false;
+const defaultUsed = 20_000;
+const defaultReserveBalance = 100_000;
 
 let title = '';
 let userBalance = 0;
 let userPayment = 0;
 let userBill = 0;
 const userExpense = 0;
-let userReserve = 0; //200_000;
+let userReserve = 0;
 const typeForPay = 'payment';
 const typeForBill = 'bill';
 
@@ -24,42 +27,74 @@ let currentExpense = 0;
 let currentTotalExpenses = userBalance;
 const transactionLogs = [];
 
-function notSpecified(val) {
+function defaultAction(message) {
+    if (isDefault) {
+        showSnackbar('warning', message);
+        isDefault = false;
+    }
+}
+
+function notSpecified(val, defaultVal) {
     if (isNaN(val) || val <= 0) {
-        return 100_000;
+        isDefault = true;
+        return defaultVal;
     }
     return val;
+}
+
+function checkBalance(bal, currBal, currRes, currResBal) {
+    if (currResBal <= 0) {
+        showSnackbar('danger', `Dana cadangan habis / tidak cukup`);
+    }
+    if (bal < currBal + currRes) {
+        showSnackbar('danger', `Maksimal pengeluaran Rp. ` + bal);
+    }
 }
 
 function initializedBalance() {
     hasInitialized = true;
     maxExpense = parseInt(maxExpense);
-    maxExpense = notSpecified(maxExpense);
+    maxExpense = notSpecified(maxExpense, defaultReserveBalance);
     userBalance = maxExpense;
     currentBalance = maxExpense;
+    defaultAction('Menggunakan nilai default');
+    setTimeout(() => {
+        showSnackbar('success', 'Dana pengeluaran berhasil diinisialisasi!');
+    }, 3000);
+}
+
+function initializedReserveBalance() {
+    maxReserve = parseInt(maxReserve);
+    maxReserve = notSpecified(maxReserve, defaultReserveBalance);
+    userReserve = maxReserve;
+    defaultAction('Menggunakan nilai default');
+    setTimeout(() => {
+        showSnackbar('default', 'Saldo dana cadangan berhasil ditambahkan!');
+    }, 3000);
 }
 
 function initializedReserve() {
-    maxReserve = parseInt(maxReserve);
-    maxReserve = notSpecified(maxReserve);
-    userReserve = maxReserve;
     currentReserve = parseInt(currentReserve);
-    currentReserve = notSpecified(currentReserve);
+    currentReserve = notSpecified(currentReserve, defaultUsed);
 }
 
 function initializedExpense(typeExpense) {
     if (!currentTitle || currentTitle === '' || currentTitle === undefined) {
-        currentTitle = 'Default';
+        currentTitle = 'Dana Keluar untuk:';
     }
     if (typeExpense === typeForPay) {
-        currentTitle += ' For Paying';
+        currentTitle += ' Pembayaran';
         currentPayment = parseInt(currentPayment);
-        currentPayment = notSpecified(currentPayment);
+        currentPayment = notSpecified(currentPayment, defaultUsed);
     } else {
         currentTitle += ' For Billing';
         currentBill = parseInt(currentBill);
-        currentBill = notSpecified(currentBill);
+        currentBill = notSpecified(currentBill, defaultUsed);
     }
+    defaultAction('Menggunakan nilai default');
+    setTimeout(() => {
+        showSnackbar('success', 'Pengeluaran-mu berhasil disimpan!');
+    }, 3000);
 }
 
 function resetUserValue() {
@@ -113,7 +148,6 @@ function writeToLog(typeTran, title, amount, total, balance, expense) {
 
 function assignExpense(typeExpense, expenseTitle, currExpense, totalExpense) {
     if (currentBalance < 0 || currentBalance < currExpense) {
-        alert('Anggaran untuk pengeluaranmu tidak cukup !');
         return;
     }
     currentExpense = addExpenses(currExpense);
@@ -149,7 +183,7 @@ function assignExpensesForBill() {
 
 function assignReserve() {
     maxReserve = getReserveBalanceValue(reserveAmount);
-    initializedReserve();
+    initializedReserveBalance();
     currentReserveBalance = userReserve;
     adjustReserve(currentReserveBalance);
     hideDialog();
@@ -161,19 +195,35 @@ function assignReserveToBalance() {
         hasReserve = true;
         currentReserve = getReserveValue(balanceAmount);
         initializedReserve();
-        console.log(currentReserve);
         if (currentReserveBalance <= 0) {
-            alert('Dana cadangan tidak cukup :' + currentReserveBalance);
             currentReserveBalance = 0;
+            checkBalance(
+                userBalance,
+                currentBalance,
+                currentReserve,
+                currentReserveBalance,
+            );
             return;
         }
         if (userBalance < currentBalance + currentReserve) {
-            alert('Batas pengeluaran sebesar ' + userBalance);
+            checkBalance(
+                userBalance,
+                currentBalance,
+                currentReserve,
+                currentReserveBalance,
+            );
             return;
         }
         currentTotalExpenses = userBalance + userReserve;
         if (hasReserve) {
             ++reserveCount;
+            defaultAction('Menggunakan nilai default');
+            setTimeout(() => {
+                showSnackbar(
+                    'success',
+                    'Berhasil menambahkan dana untuk pengeluaran!',
+                );
+            }, 2000);
         }
         reserveCount = changeReserveCounter(reserveCount);
         currentBalance = increaseBalance(currentReserve);
@@ -185,7 +235,7 @@ function assignReserveToBalance() {
         initializedBalance();
         adjustBalanceBars(userBalance);
         resetInput(balanceAmount);
-        cancelAssignBtn[0].style.display = 'block';
+        cancelAssignBtn[0].classList.replace('hide', 'open');
     }
     adjustExpenseBars(
         userBalance,

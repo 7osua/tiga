@@ -445,6 +445,10 @@ a:focus-visible {
     display: block !important;
 }
 
+.hide{
+    display:none !important;
+}
+
 .wrapper {
     position: fixed;
     background-color: #212529;
@@ -601,7 +605,7 @@ button:focus-visible {
 }
 
 #snackbar {
-    z-index: 6;
+    z-index: 7;
     position: fixed;
     bottom: 10%;
     left: 100%;
@@ -610,7 +614,7 @@ button:focus-visible {
     width: 100%;
     height: 3rem;
     border-radius: 0.5rem;
-    margin: 0 auto;
+    margin: 0 1rem;
 }
 
 .snackbar-indicator {
@@ -626,10 +630,10 @@ button:focus-visible {
 }
 
 .snackbar-message {
-    color: #343a40;
+    color: #212529;
     font-size: 0.875rem;
     font-weight: 700;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.25px;
 }
 
 .snackbar-action {
@@ -639,6 +643,7 @@ button:focus-visible {
 }
 
 .snackbar-action > button {
+    display: none;
     outline: unset;
     border: none;
     background-color: unset;
@@ -666,12 +671,13 @@ button:focus-visible {
 
 .slide {
     left: 0;
-    animation: slide-out-left 3s;
+    animation: slide-out-left 2s;
 }
 
 .default {
     background-color: #339af0;
 }
+
 .default > .snackbar-indicator {
     background-color: #1864ab;
 }

@@ -29,6 +29,9 @@ const savePaymentBtn = document.getElementById('save-payment');
 const saveBillBtn = document.getElementById('save-bill');
 const saveReserveBtn = document.getElementById('save-reserve');
 
+const snackbar = document.getElementById('snackbar');
+const snackbarMessage = document.querySelector('.snackbar-message');
+
 function showContent(linkItem, content, bkDrop) {
     bkDrop = backdrop;
     if (linkItem) {
@@ -36,6 +39,16 @@ function showContent(linkItem, content, bkDrop) {
     }
     bkDrop.classList.toggle('open');
     content.classList.toggle('open');
+}
+
+function showSnackbar(status, message) {
+    snackbarMessage.textContent = message;
+    snackbar.classList.add(status);
+    snackbar.classList.add('slide');
+    setTimeout(() => {
+        snackbar.classList.remove(status);
+        snackbar.classList.remove('slide');
+    }, 2000);
 }
 
 function showBalanceContent() {
@@ -80,9 +93,11 @@ function hideDialog() {
 }
 
 const initContent = () => {
+    const message = 'Ayo, tentukan batas pengeluaran maksimal mu!';
     showContent(null, balances);
     initBalance();
-    cancelAssignBtn[0].style.display = 'none';
+    showSnackbar('default', message);
+    cancelAssignBtn[0].classList.toggle('hide');
 };
 
 const adjustExpenseBars = (maxAmount, totalAmount, amount, hasReserve) => {
@@ -179,7 +194,7 @@ const getExpenseValue = (elmTitle, elemAmount) => {
 const getReserveValue = (elemAmount) => {
     const amount = elemAmount.value;
     return amount;
-}
+};
 
 const getReserveBalanceValue = (elemAmount) => {
     const amount = elemAmount.value;
