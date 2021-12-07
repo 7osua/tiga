@@ -96,7 +96,7 @@ const initContent = () => {
     const message = 'Ayo, tentukan batas pengeluaran maksimal mu!';
     showContent(null, balances);
     initBalance();
-    showSnackbar('default', message);
+    snackbarTellToInit();
     cancelAssignBtn[0].classList.toggle('hide');
 };
 
@@ -164,6 +164,7 @@ const resetValue = (maxAmount, value) => {
     reserveCounter.textContent = value;
     reserveVal.textContent = value;
     expensesBar.value = value;
+    snackbarResettingApp();
 };
 
 const reserveEvent = (elmLink, elmBtn) => {

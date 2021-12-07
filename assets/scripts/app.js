@@ -27,13 +27,6 @@ let currentExpense = 0;
 let currentTotalExpenses = userBalance;
 const transactionLogs = [];
 
-function defaultAction(message) {
-    if (isDefault) {
-        showSnackbar('warning', message);
-        isDefault = false;
-    }
-}
-
 function notSpecified(val, defaultVal) {
     if (isNaN(val) || val <= 0) {
         isDefault = true;
@@ -42,35 +35,19 @@ function notSpecified(val, defaultVal) {
     return val;
 }
 
-function checkBalance(bal, currBal, currRes, currResBal) {
-    if (currResBal <= 0) {
-        showSnackbar('danger', `Dana cadangan habis / tidak cukup`);
-    }
-    if (bal < currBal + currRes) {
-        showSnackbar('danger', `Maksimal pengeluaran Rp. ` + bal);
-    }
-}
-
 function initializedBalance() {
     hasInitialized = true;
     maxExpense = parseInt(maxExpense);
     maxExpense = notSpecified(maxExpense, defaultReserveBalance);
     userBalance = maxExpense;
     currentBalance = maxExpense;
-    defaultAction('Menggunakan nilai default');
-    setTimeout(() => {
-        showSnackbar('success', 'Dana pengeluaran berhasil diinisialisasi!');
-    }, 3000);
+    snackbarTellToInit();
 }
 
 function initializedReserveBalance() {
     maxReserve = parseInt(maxReserve);
     maxReserve = notSpecified(maxReserve, defaultReserveBalance);
     userReserve = maxReserve;
-    defaultAction('Menggunakan nilai default');
-    setTimeout(() => {
-        showSnackbar('default', 'Saldo dana cadangan berhasil ditambahkan!');
-    }, 3000);
 }
 
 function initializedReserve() {
@@ -87,14 +64,10 @@ function initializedExpense(typeExpense) {
         currentPayment = parseInt(currentPayment);
         currentPayment = notSpecified(currentPayment, defaultUsed);
     } else {
-        currentTitle += ' For Billing';
+        currentTitle += ' Tagihan';
         currentBill = parseInt(currentBill);
         currentBill = notSpecified(currentBill, defaultUsed);
     }
-    defaultAction('Menggunakan nilai default');
-    setTimeout(() => {
-        showSnackbar('success', 'Pengeluaran-mu berhasil disimpan!');
-    }, 3000);
 }
 
 function resetUserValue() {
@@ -119,7 +92,8 @@ function resetUserValue() {
             hasInitialized = false;
             reserveEvent(reserveLink, saveReserveBtn);
             initContent();
-        }, 1500);
+        }, 2100);
+        snackbarResettingApp();
     }
 }
 
@@ -143,10 +117,12 @@ function writeToLog(typeTran, title, amount, total, balance, expense) {
     transactionDetail.balance = balance;
     transactionDetail.expenses = expense;
     transactionLogs.push(transactionDetail);
+    console.table(transactionLogs);
 }
 
 function assignExpense(typeExpense, expenseTitle, currExpense, totalExpense) {
     if (currentBalance < 0 || currentBalance < currExpense) {
+        snackbarPaymentFailed(typeExpense);
         return;
     }
     currentExpense = addExpenses(currExpense);
@@ -159,6 +135,7 @@ function assignExpense(typeExpense, expenseTitle, currExpense, totalExpense) {
         currentBalance,
         currentExpense,
     );
+    snackbarPaymentSuccess(typeExpense);
     resetUserValue();
     hideDialog();
 }
@@ -186,7 +163,27 @@ function assignReserve() {
     currentReserveBalance = userReserve;
     adjustReserve(currentReserveBalance);
     hideDialog();
+    snackbarReserve();
     preventReserve();
+}
+
+function checkBalance() {
+    if (currentReserveBalance <= 0 && reserveCount === 0) {
+        snackbarEmptyReserveBalance();
+        return;
+    }
+    if (
+        userBalance < currentBalance + currentReserve &&
+        currentReserveBalance >= 0
+    ) {
+        snackbarFailedMeetMaxExpense(userBalance);
+        return;
+    }
+    if (currentReserveBalance < currentReserve && reserveCount >= 0) {
+        snackbarReserveBalanceMinus();
+        return;
+    }
+    return true;
 }
 
 function assignReserveToBalance() {
@@ -194,36 +191,14 @@ function assignReserveToBalance() {
         hasReserve = true;
         currentReserve = getReserveValue(balanceAmount);
         initializedReserve();
-        if (currentReserveBalance <= 0) {
-            currentReserveBalance = 0;
-            checkBalance(
-                userBalance,
-                currentBalance,
-                currentReserve,
-                currentReserveBalance,
-            );
+        if (!checkBalance()) {
             return;
         }
-        if (userBalance < currentBalance + currentReserve) {
-            checkBalance(
-                userBalance,
-                currentBalance,
-                currentReserve,
-                currentReserveBalance,
-            );
-            return;
-        }
-        currentTotalExpenses = userBalance + userReserve;
         if (hasReserve) {
             ++reserveCount;
-            defaultAction('Menggunakan nilai default');
-            setTimeout(() => {
-                showSnackbar(
-                    'success',
-                    'Berhasil menambahkan dana untuk pengeluaran!',
-                );
-            }, 2000);
+            snackbarReserveToBalanceSuccess();
         }
+        currentTotalExpenses = userBalance + userReserve;
         reserveCount = changeReserveCounter(reserveCount);
         currentBalance = increaseBalance(currentReserve);
         currentReserveBalance = descreaseReserve(
@@ -233,6 +208,7 @@ function assignReserveToBalance() {
     } else {
         initializedBalance();
         adjustBalanceBars(userBalance);
+        snackbarInitBalance(hasInitialized, maxExpense);
         resetInput(balanceAmount);
         cancelAssignBtn[0].classList.replace('hide', 'open');
     }
@@ -243,9 +219,9 @@ function assignReserveToBalance() {
         hasReserve,
     );
     hideDialog();
+    savePaymentBtn.addEventListener('click', assignExpensesForPayment);
 }
 
-savePaymentBtn.addEventListener('click', assignExpensesForPayment);
 saveBillBtn.addEventListener('click', assignExpensesForBill);
 saveReserveBtn.addEventListener('click', assignReserve);
 saveBalanceBtn.addEventListener('click', assignReserveToBalance);
