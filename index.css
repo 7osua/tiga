@@ -671,7 +671,7 @@ button:focus-visible {
 
 .slide {
     left: 0;
-    animation: slide-out-left 2s;
+    animation: slide-out-left 3s;
 }
 
 .default {

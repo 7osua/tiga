@@ -48,7 +48,7 @@ function showSnackbar(status, message) {
     setTimeout(() => {
         snackbar.classList.remove(status);
         snackbar.classList.remove('slide');
-    }, 2000);
+    }, 3000);
 }
 
 function showBalanceContent() {

@@ -92,7 +92,7 @@ function resetUserValue() {
             hasInitialized = false;
             reserveEvent(reserveLink, saveReserveBtn);
             initContent();
-        }, 2100);
+        }, 3100);
         snackbarResettingApp();
     }
 }
