@@ -12,6 +12,7 @@ let userExpense = 0;
 let userReserve = 0;
 const typeForPay = 'payment';
 const typeForBill = 'bill';
+const typeForReserve = 'reserve';
 
 let currentBalance = 0;
 let currentPayment = 0;
@@ -25,6 +26,7 @@ let maxReserve = 0;
 
 let currentExpense = 0;
 let currentTotalExpenses = userBalance;
+let currentTotalReserve = 0;
 const transactionLogs = [];
 
 function notSpecified(val, defaultVal) {
@@ -53,6 +55,7 @@ function initializedReserveBalance() {
 function initializedReserve() {
     currentReserve = parseInt(currentReserve);
     currentReserve = notSpecified(currentReserve, defaultUsed);
+    currentTitle = 'Dana masuk dari: Cadangan';
 }
 
 function initializedExpense(typeExpense) {
@@ -110,6 +113,8 @@ function writeToLog(typeTran, title, amount, total, balance, expense) {
         transactionDetail.type = typeForPay;
     } else if (typeTran === typeForBill) {
         transactionDetail.type = typeForBill;
+    } else if (typeTran === typeForReserve) {
+        transactionDetail.type = typeForReserve;
     }
     transactionDetail.title = title;
     transactionDetail.amount = amount;
@@ -199,11 +204,20 @@ function assignReserveToBalance() {
             snackbarReserveToBalanceSuccess();
         }
         currentTotalExpenses = userBalance + userReserve;
+        currentTotalReserve += currentReserve;
         reserveCount = changeReserveCounter(reserveCount);
         currentBalance = increaseBalance(currentReserve);
         currentReserveBalance = descreaseReserve(
             currentReserveBalance,
             currentReserve,
+        );
+        writeToLog(
+            typeForReserve,
+            currentTitle,
+            currentReserve,
+            currentTotalReserve,
+            currentBalance,
+            0,
         );
     } else {
         initializedBalance();
