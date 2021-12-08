@@ -109,13 +109,10 @@ function writeToLog(typeTran, title, amount, total, balance, expense) {
         expenses: 0,
         balance: 0,
     };
-    if (typeTran === typeForPay) {
-        transactionDetail.type = typeForPay;
-    } else if (typeTran === typeForBill) {
-        transactionDetail.type = typeForBill;
-    } else if (typeTran === typeForReserve) {
-        transactionDetail.type = typeForReserve;
-    }
+    typeTran === typeForPay && (transactionDetail.type = typeForPay);
+    typeTran === typeForBill && (transactionDetail.type = typeForBill);
+    typeTran === typeForReserve && (transactionDetail.type = typeForReserve);
+
     transactionDetail.title = title;
     transactionDetail.amount = amount;
     transactionDetail.total = total;
