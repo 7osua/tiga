@@ -125,7 +125,10 @@ function writeToLog(typeTran, title, amount, total, balance, expense) {
 }
 
 function assignExpense(typeExpense, expenseTitle, currExpense, totalExpense) {
-    if (currentBalance < 0 || currentBalance < currExpense) {
+    if (currentBalance === 0 && !hasReserve) {
+        snackbarBalanceEmpty();
+        return;
+    } else if (currentBalance < 0 || currentBalance < currExpense) {
         snackbarPaymentFailed(typeExpense);
         return;
     }
@@ -176,6 +179,10 @@ function checkBalance() {
         snackbarEmptyReserveBalance();
         return;
     }
+    if (currentReserveBalance < currentReserve && reserveCount >= 0) {
+        snackbarReserveBalanceMinus();
+        return;
+    }
     if (
         userBalance < currentBalance + currentReserve &&
         currentReserveBalance >= 0
@@ -183,8 +190,8 @@ function checkBalance() {
         snackbarFailedMeetMaxExpense(userBalance);
         return;
     }
-    if (currentReserveBalance < currentReserve && reserveCount >= 0) {
-        snackbarReserveBalanceMinus();
+    if (currentReserveBalance === 0 && reserveCount > 0) {
+        snackbarEmptyReserve();
         return;
     }
     return true;

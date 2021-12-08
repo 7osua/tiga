@@ -5,6 +5,10 @@ const snackbarInitBalance = () => {
     showSnackbar('success', 'Inisialisasi anggaran untuk pengeluaran berhasil');
 };
 
+const snackbarBalanceEmpty = () => {
+    showSnackbar('warning', 'Dana untuk pengeluaran telah habis');
+};
+
 const snackbarPaymentSuccess = (type) => {
     type === 'payment'
         ? showSnackbar('success', 'Pembayaran mu berhasil dicatat')
@@ -30,6 +34,10 @@ const snackbarEmptyReserveBalance = () => {
 
 const snackbarFailedMeetMaxExpense = (maxVal) => {
     showSnackbar('danger', 'Gagal menambah, max  pengeluaran Rp. ' + maxVal);
+};
+
+const snackbarEmptyReserve = () => {
+    showSnackbar('warning', 'Semua Dana cadangan telah terpakai!');
 };
 
 const snackbarReserveBalanceMinus = () => {
