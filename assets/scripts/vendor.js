@@ -2,6 +2,7 @@ const balanceBtn = document.getElementById('expense-balance__assign-button');
 const paymentLink = document.getElementById('content__payments');
 const billLink = document.getElementById('content__bills');
 const reserveLink = document.getElementById('content__reserves');
+const historyLink = document.getElementById('content__histories');
 
 const expensesBar = document.getElementById('expenses-minus');
 const balanceBar = document.getElementById('expenses-balance');

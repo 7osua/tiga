@@ -122,7 +122,6 @@ function writeToLog(typeTran, title, amount, total, balance, expense) {
     transactionDetail.balance = balance;
     transactionDetail.expenses = expense;
     transactionLogs.push(transactionDetail);
-    console.table(transactionLogs);
 }
 
 function assignExpense(typeExpense, expenseTitle, currExpense, totalExpense) {
@@ -236,6 +235,10 @@ function assignReserveToBalance() {
     savePaymentBtn.addEventListener('click', assignExpensesForPayment);
 }
 
+function showHistoriesContent() {
+    console.table(transactionLogs);
+}
+
 saveBillBtn.addEventListener('click', assignExpensesForBill);
 saveReserveBtn.addEventListener('click', assignReserve);
 saveBalanceBtn.addEventListener('click', assignReserveToBalance);
@@ -244,8 +247,9 @@ balanceBtn.addEventListener('click', showBalanceContent);
 paymentLink.addEventListener('click', showPaymentContent);
 billLink.addEventListener('click', showBillContent);
 reserveLink.addEventListener('click', showReserveContent);
-backdrop.addEventListener('click', hideDialog);
+historyLink.addEventListener('click', showHistoriesContent);
 
+backdrop.addEventListener('click', hideDialog);
 cancelAssignBtn.forEach(function (elem) {
     elem.addEventListener('click', hideDialog);
 });
