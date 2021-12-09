@@ -445,8 +445,8 @@ a:focus-visible {
     display: block !important;
 }
 
-.hide{
-    display:none !important;
+.hide {
+    display: none !important;
 }
 
 .wrapper {
@@ -490,7 +490,8 @@ a:focus-visible {
 #balance,
 #payment,
 #bill,
-#reserve {
+#reserve,
+#histories {
     display: none;
 }
 

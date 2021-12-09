@@ -1,5 +1,23 @@
 const root = document.getElementById('root');
 
+const createHistories = function () {
+    root.insertAdjacentHTML(
+        'afterbegin',
+        `
+            <section id="histories">
+                <div>
+                    <h2>Daftar Catatan Keuangan Mu</h2>
+                </div>
+                <div>
+                    <p>
+                        Cooming soon !
+                    </p>
+                </div>
+            </section>
+        `,
+    );
+};
+
 const createSnackbar = function () {
     root.insertAdjacentHTML(
         'beforeend',
@@ -254,6 +272,7 @@ const createNavigatioRail = function () {
 
 const initPage = () => {
     createSnackbar();
+    createHistories();
     createReserves();
     createBills();
     createPayments();
