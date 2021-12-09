@@ -1,23 +1,5 @@
 const root = document.getElementById('root');
 
-const createHistories = function () {
-    root.insertAdjacentHTML(
-        'afterbegin',
-        `
-            <section id="histories">
-                <div>
-                    <h2>Daftar Catatan Keuangan Mu</h2>
-                </div>
-                <div>
-                    <p>
-                        Cooming soon !
-                    </p>
-                </div>
-            </section>
-        `,
-    );
-};
-
 const createSnackbar = function () {
     root.insertAdjacentHTML(
         'beforeend',
@@ -39,6 +21,27 @@ const createSnackbar = function () {
         `,
     );
 };
+
+const createHistories = function () {
+    root.insertAdjacentHTML(
+        'afterbegin',
+        `
+            <section id="histories" class="wrapper">
+                <div class="content-item">
+                    <div>
+                        <h2>Daftar Catatan Keuangan Mu</h2>
+                    </div>
+                    <div>
+                        <p>
+                            Cooming soon !
+                        </p>
+                    </div>
+                </div>
+            </section>
+        `,
+    );
+};
+
 const createReserves = function () {
     root.insertAdjacentHTML(
         'afterbegin',
